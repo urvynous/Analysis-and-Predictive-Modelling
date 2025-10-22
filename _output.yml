@@ -4,7 +4,7 @@ bookdown::gitbook:
     toc:
       before: |
         <img src="images/azky.jpg" style="width:120px; display:block; margin:auto;">
-        <h2>Analysis and Predictive Modelling</h2>
+        <h2 style="text-align:center; margin-top:10px; font-size:1.2em;">Analysis and Predictive Modelling</h2>
       after: |
         <p style="text-align:center;">Institut Teknologi Sains Bandung<br><small>Data Science Program</small></p>
     toolbar:
