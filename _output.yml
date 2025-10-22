@@ -13,3 +13,14 @@ bookdown::gitbook:
       link: "https://github.com/urvynous/Analysis-and-Predictive-Modelling/edit/main/%s"
       text: "Take a look at GitHub"
     download: ["pdf", "epub"]
+    sharing:
+      facebook: true
+      twitter: true
+      linkedin: true
+      weibo: false
+      instapaper: false
+      vk: false
+    fontsettings:
+      theme: white
+      family: sans
+      size: 2
