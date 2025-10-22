@@ -1,14 +1,38 @@
-p.caption {
-  color: #777;
-  margin-top: 10px;
+/* ====== Bookdown Custom Style ====== */
+
+/* Umum */
+body {
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  background-color: #ffffff;
+  color: #222;
 }
-p code {
-  white-space: inherit;
+
+/* Judul */
+h1, h2, h3, h4 {
+  color: #0A4D68;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
 }
-pre {
-  word-break: normal;
-  word-wrap: normal;
+
+/* Sidebar (TOC) */
+.book .book-summary {
+  background-color: #f8f9fa;
+  border-right: 1px solid #e0e0e0;
 }
-pre code {
-  white-space: inherit;
+
+/* Header */
+.book .book-header {
+  background: #0A4D68;
+  color: white;
+  text-align: center;
+}
+
+/* Link */
+a {
+  color: #0A4D68;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }

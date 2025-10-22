@@ -1,8 +1,13 @@
-book_filename: "bookdown APM"
-output_dir: docs
-delete_merged_file: true
+book_filename: "Analysis-and-Predictive-Modelling"
+output_dir: "docs"
 edit: https://github.com/urvynous/Analysis-and-Predictive-Modelling/edit/main/%s
 view: https://github.com/urvynous/Analysis-and-Predictive-Modelling/blob/main/%s
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: ""
+rmd_files:
+  - index.Rmd
+  - 02-tears.Rmd
+  - 03-race.Rmd
+delete_merged_file: true
+

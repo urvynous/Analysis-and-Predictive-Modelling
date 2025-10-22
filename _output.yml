@@ -3,6 +3,13 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">Analysis and Predictive Modelling</a></li>
+        <img src="images/azky.jpg" style="width:120px; display:block; margin:auto;">
+        <h2>Analysis and Predictive Modelling</h2>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+        <p style="text-align:center;">Institut Teknologi Sains Bandung<br><small>Data Science Program</small></p>
+    toolbar:
+      position: fixed
+    edit:
+      link: "https://github.com/urvynous/Analysis-and-Predictive-Modelling/edit/main/%s"
+      text: "Take a look at GitHub"
+    download: ["pdf", "epub"]

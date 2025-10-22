@@ -1,1 +1,38 @@
+/* ====== Bookdown Custom Style ====== */
 
+/* Umum */
+body {
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  background-color: #ffffff;
+  color: #222;
+}
+
+/* Judul */
+h1, h2, h3, h4 {
+  color: #0A4D68;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+/* Sidebar (TOC) */
+.book .book-summary {
+  background-color: #f8f9fa;
+  border-right: 1px solid #e0e0e0;
+}
+
+/* Header */
+.book .book-header {
+  background: #0A4D68;
+  color: white;
+  text-align: center;
+}
+
+/* Link */
+a {
+  color: #0A4D68;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
