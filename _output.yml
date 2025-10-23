@@ -24,3 +24,7 @@ bookdown::gitbook:
       theme: white
       family: sans
       size: 2
+    toc_depth: 3
+    collapse: section
+    toc_float: true
+    toc_collapse: subsection
