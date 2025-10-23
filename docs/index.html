@@ -20,10 +20,8 @@
   
   
 
-<meta name="author" content="Siti Azkya Nurhalima" />
 
 
-<meta name="date" content="2025-10-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,8 +50,105 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.11/grViz.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<!-- Floating TOC di kanan atas -->
+<div id="floating-toc" class="floating-toc"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const headers = document.querySelectorAll(".page-inner h2, .page-inner h3");
+  if (headers.length === 0) return;
+
+  const toc = document.getElementById("floating-toc");
+  const list = document.createElement("ul");
+
+  headers.forEach(h => {
+    const id = h.id || h.textContent.trim().replace(/\s+/g, "-").toLowerCase();
+    h.id = id;
+
+    const li = document.createElement("li");
+    li.className = h.tagName.toLowerCase() === "h3" ? "sub" : "";
+    li.innerHTML = `<a href="#${id}">${h.textContent}</a>`;
+    list.appendChild(li);
+  });
+
+  toc.appendChild(list);
+});
+</script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -73,15 +168,42 @@
       <nav role="navigation">
 
 <ul class="summary">
-<img src="images/azky.jpg" style="width:120px; display:block; margin:auto;">
-<h2 style="text-align:center; margin-top:10px; font-size:1.2em;">Analysis and Predictive Modelling</h2>
+<div class="sidebar-header">
+  <img src="images/azky.jpg" class="sidebar-logo">
+  <h2 class="sidebar-title">Analysis and Predictive Modelling</h2>
+  <div class="sidebar-icons">
+    <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
+    <a href="#" title="Share"><i class="fa fa-share-alt"></i></a>
+    <a href="#" title="External Link"><i class="fa fa-link"></i></a>
+    <a href="https://github.com/" title="GitHub"><i class="fa fa-github"></i></a>
+  </div>
+</div>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Predictive Analysis</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#predictive-analysis"><i class="fa fa-check"></i><b>1.1</b> Predictive Analysis</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#definition-of-predictive-analysis"><i class="fa fa-check"></i><b>1.1.1</b> Definition of Predictive Analysis</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#types-techniques-and-data-in-predictive-analytics"><i class="fa fa-check"></i><b>1.1.2</b> Types, Techniques, and Data in Predictive Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#predictive-analysis-concepts"><i class="fa fa-check"></i><b>1.2</b> Predictive Analysis Concepts</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#why-use-predictive-analysis"><i class="fa fa-check"></i><b>1.2.1</b> Why Use Predictive Analysis?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#references"><i class="fa fa-check"></i><b>1.3</b> References</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="regression-models.html"><a href="regression-models.html"><i class="fa fa-check"></i><b>2</b> Regression Models</a></li>
-<li class="chapter" data-level="3" data-path="a-caucus-race-and-a-long-tale.html"><a href="a-caucus-race-and-a-long-tale.html"><i class="fa fa-check"></i><b>3</b> A caucus-race and a long tale</a></li>
+<li class="chapter" data-level="3" data-path="classification-models.html"><a href="classification-models.html"><i class="fa fa-check"></i><b>3</b> Classification Models</a></li>
 <li class="divider"></li>
-<p style="text-align:center;">Institut Teknologi Sains Bandung<br><small>Data Science Program</small></p>
+<div class="sidebar-footer">
+ <p><strong>Institut Teknologi Sains Bandung</strong><br>
+  <span>Data Science Program</span></p>
+  <p class="sidebar-author">
+    <strong>Author:</strong> Siti Azkya Nurhalima<br>
+    <strong>Date:</strong> 25-10-23
+  </p>
+</div>
 
 </ul>
 
@@ -102,13 +224,459 @@
             <section class="normal" id="section-">
 <div id="header">
 <h1 class="title">Analysis and Predictive Modelling</h1>
-<h2 class="subtitle"><em>Introduction</em></h2>
-<p class="author"><em>Siti Azkya Nurhalima</em></p>
-<p class="date"><em>2025-10-23</em></p>
 </div>
-<div id="predictive-analysis" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> Predictive Analysis<a href="index.html#predictive-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In the contemporary data-driven era, organizations are increasingly relying on predictive analytics (PA) to transform raw data into actionable intelligence. Predictive analytics represents the convergence of statistical modeling, machine learning, and domain-specific knowledge, all aimed at anticipating future events or behaviors based on historical information. Unlike descriptive analytics, which explains past phenomena, or diagnostic analytics, which identifies underlying causes, predictive analytics focuses on forecasting outcomes and informing strategic decisions with quantifiable evidence.</p>
+<p>The evolution of predictive analytics has been propelled by the rapid growth of data availability, computational power, and algorithmic sophistication. These advancements have allowed enterprises, governments, and researchers to derive insights with unprecedented precision, enabling proactive decision-making across sectors such as finance, healthcare, marketing, and manufacturing. However, the value of predictive analytics extends beyond the mere application of algorithms. Its true strength lies in the integration of technical expertise, contextual understanding, and business alignment, which collectively ensure that analytical outcomes are both accurate and operationally meaningful.</p>
+<p>At its core, predictive analytics functions as a multidisciplinary ecosystem, requiring collaboration among various professionals—data scientists, business analysts, domain experts, data engineers, and machine learning engineers. Each role contributes specialized skills that collectively bridge the gap between data and decision. Through this synergy, predictive analytics transforms from a purely computational process into a strategic capability that drives innovation, optimizes performance, and enhances competitive advantage.</p>
+<p>In essence, the introduction to predictive analytics provides a foundational understanding of how data science principles are operationalized to generate predictive power. It emphasizes that successful implementation is not solely determined by the sophistication of models, but by the effective collaboration of human expertise, technological infrastructure, and organizational purpose. This holistic perspective establishes the groundwork for the chapters that follow, which will explore the methodologies, tools, and professional roles that shape the predictive analytics lifecycle.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(DiagrammeR)) <span class="fu">install.packages</span>(<span class="st">&quot;DiagrammeR&quot;</span>)</span>
+<span id="cb1-2"><a href="index.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(DiagrammeR)</span>
+<span id="cb1-3"><a href="index.html#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="index.html#cb1-4" tabindex="-1"></a><span class="fu">grViz</span>(<span class="st">&quot;</span></span>
+<span id="cb1-5"><a href="index.html#cb1-5" tabindex="-1"></a><span class="st">digraph predictive_analytics {</span></span>
+<span id="cb1-6"><a href="index.html#cb1-6" tabindex="-1"></a><span class="st">  graph [layout = dot, rankdir = LR, bgcolor=&#39;white&#39;]</span></span>
+<span id="cb1-7"><a href="index.html#cb1-7" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="index.html#cb1-8" tabindex="-1"></a><span class="st">  node [shape=box, style=filled, fontname=Helvetica, fontsize=18, penwidth=1.5]</span></span>
+<span id="cb1-9"><a href="index.html#cb1-9" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="index.html#cb1-10" tabindex="-1"></a><span class="st">  # ==== CENTRAL NODE ====</span></span>
+<span id="cb1-11"><a href="index.html#cb1-11" tabindex="-1"></a><span class="st">  PA [label=&#39;PREDICTIVE ANALYTICS&#39;, shape=ellipse, fillcolor=&#39;#F2F2F2&#39;, fontsize=24, width=3.5, height=1.2]</span></span>
+<span id="cb1-12"><a href="index.html#cb1-12" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="index.html#cb1-13" tabindex="-1"></a><span class="st">  # ==== MAIN CATEGORIES ====</span></span>
+<span id="cb1-14"><a href="index.html#cb1-14" tabindex="-1"></a><span class="st">  What   [label=&#39;What?&#39;,   fillcolor=&#39;#0B3D91&#39;, fontcolor=&#39;white&#39;]</span></span>
+<span id="cb1-15"><a href="index.html#cb1-15" tabindex="-1"></a><span class="st">  Why    [label=&#39;Why?&#39;,    fillcolor=&#39;#8B004B&#39;, fontcolor=&#39;white&#39;]</span></span>
+<span id="cb1-16"><a href="index.html#cb1-16" tabindex="-1"></a><span class="st">  When   [label=&#39;When?&#39;,   fillcolor=&#39;#A0522D&#39;, fontcolor=&#39;white&#39;]</span></span>
+<span id="cb1-17"><a href="index.html#cb1-17" tabindex="-1"></a><span class="st">  Where  [label=&#39;Where?&#39;,  fillcolor=&#39;#4B0082&#39;, fontcolor=&#39;white&#39;]</span></span>
+<span id="cb1-18"><a href="index.html#cb1-18" tabindex="-1"></a><span class="st">  Who    [label=&#39;Who?&#39;,    fillcolor=&#39;#7B241C&#39;, fontcolor=&#39;white&#39;]</span></span>
+<span id="cb1-19"><a href="index.html#cb1-19" tabindex="-1"></a><span class="st">  How    [label=&#39;How?&#39;,    fillcolor=&#39;#145A32&#39;, fontcolor=&#39;white&#39;]</span></span>
+<span id="cb1-20"><a href="index.html#cb1-20" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="index.html#cb1-21" tabindex="-1"></a><span class="st">  # ==== SUBCATEGORIES ====</span></span>
+<span id="cb1-22"><a href="index.html#cb1-22" tabindex="-1"></a><span class="st">  # --- WHAT ---</span></span>
+<span id="cb1-23"><a href="index.html#cb1-23" tabindex="-1"></a><span class="st">  W1 [label=&#39;Definition &amp; Types&#39;, fillcolor=&#39;#5B8DD9&#39;]</span></span>
+<span id="cb1-24"><a href="index.html#cb1-24" tabindex="-1"></a><span class="st">  W2 [label=&#39;Techniques&#39;, fillcolor=&#39;#5B8DD9&#39;]</span></span>
+<span id="cb1-25"><a href="index.html#cb1-25" tabindex="-1"></a><span class="st">  W3 [label=&#39;Data Types&#39;, fillcolor=&#39;#5B8DD9&#39;]</span></span>
+<span id="cb1-26"><a href="index.html#cb1-26" tabindex="-1"></a><span class="st">  W1a [label=&#39;Descriptive vs Predictive&#39;, fillcolor=&#39;#B3C9F1&#39;]</span></span>
+<span id="cb1-27"><a href="index.html#cb1-27" tabindex="-1"></a><span class="st">  W2a [label=&#39;Regression, Classification, Clustering, Time Series&#39;, fillcolor=&#39;#B3C9F1&#39;]</span></span>
+<span id="cb1-28"><a href="index.html#cb1-28" tabindex="-1"></a><span class="st">  W3a [label=&#39;Structured &amp; Unstructured Data&#39;, fillcolor=&#39;#B3C9F1&#39;]</span></span>
+<span id="cb1-29"><a href="index.html#cb1-29" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="index.html#cb1-30" tabindex="-1"></a><span class="st">  # --- WHY ---</span></span>
+<span id="cb1-31"><a href="index.html#cb1-31" tabindex="-1"></a><span class="st">  Y1 [label=&#39;Benefits &amp; Business Impact&#39;, fillcolor=&#39;#D96CA3&#39;]</span></span>
+<span id="cb1-32"><a href="index.html#cb1-32" tabindex="-1"></a><span class="st">  Y2 [label=&#39;ROI&#39;, fillcolor=&#39;#D96CA3&#39;]</span></span>
+<span id="cb1-33"><a href="index.html#cb1-33" tabindex="-1"></a><span class="st">  Y1a [label=&#39;Decision Making&#39;, fillcolor=&#39;#F4B9D0&#39;]</span></span>
+<span id="cb1-34"><a href="index.html#cb1-34" tabindex="-1"></a><span class="st">  Y1b [label=&#39;Risk Reduction&#39;, fillcolor=&#39;#F4B9D0&#39;]</span></span>
+<span id="cb1-35"><a href="index.html#cb1-35" tabindex="-1"></a><span class="st">  Y2a [label=&#39;Cost Savings &amp; Revenue Gain&#39;, fillcolor=&#39;#F4B9D0&#39;]</span></span>
+<span id="cb1-36"><a href="index.html#cb1-36" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="index.html#cb1-37" tabindex="-1"></a><span class="st">  # --- WHEN ---</span></span>
+<span id="cb1-38"><a href="index.html#cb1-38" tabindex="-1"></a><span class="st">  We1 [label=&#39;When to Apply&#39;, fillcolor=&#39;#C28840&#39;]</span></span>
+<span id="cb1-39"><a href="index.html#cb1-39" tabindex="-1"></a><span class="st">  We1a [label=&#39;Planning, Operations, Marketing, Risk Assessment&#39;, fillcolor=&#39;#E3B673&#39;]</span></span>
+<span id="cb1-40"><a href="index.html#cb1-40" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="index.html#cb1-41" tabindex="-1"></a><span class="st">  # --- WHERE ---</span></span>
+<span id="cb1-42"><a href="index.html#cb1-42" tabindex="-1"></a><span class="st">  Wh1 [label=&#39;Industries &amp; Case Studies&#39;, fillcolor=&#39;#8B66D9&#39;]</span></span>
+<span id="cb1-43"><a href="index.html#cb1-43" tabindex="-1"></a><span class="st">  Wh1a [label=&#39;Finance, Banking, Healthcare, Supply Chain&#39;, fillcolor=&#39;#C9AFE6&#39;]</span></span>
+<span id="cb1-44"><a href="index.html#cb1-44" tabindex="-1"></a><span class="st">  Wh1b [label=&#39;Netflix Recommendations, Walmart Forecasting&#39;, fillcolor=&#39;#C9AFE6&#39;]</span></span>
+<span id="cb1-45"><a href="index.html#cb1-45" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="index.html#cb1-46" tabindex="-1"></a><span class="st">  # --- WHO ---</span></span>
+<span id="cb1-47"><a href="index.html#cb1-47" tabindex="-1"></a><span class="st">  Wo1 [label=&#39;Roles&#39;, fillcolor=&#39;#D96B6B&#39;]</span></span>
+<span id="cb1-48"><a href="index.html#cb1-48" tabindex="-1"></a><span class="st">  Wo1a [label=&#39;Data Scientist&#39;, fillcolor=&#39;#F4A6A6&#39;]</span></span>
+<span id="cb1-49"><a href="index.html#cb1-49" tabindex="-1"></a><span class="st">  Wo1b [label=&#39;Business Analyst&#39;, fillcolor=&#39;#F4A6A6&#39;]</span></span>
+<span id="cb1-50"><a href="index.html#cb1-50" tabindex="-1"></a><span class="st">  Wo1c [label=&#39;Domain Expert&#39;, fillcolor=&#39;#F4A6A6&#39;]</span></span>
+<span id="cb1-51"><a href="index.html#cb1-51" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="index.html#cb1-52" tabindex="-1"></a><span class="st">  # --- HOW ---</span></span>
+<span id="cb1-53"><a href="index.html#cb1-53" tabindex="-1"></a><span class="st">  H1 [label=&#39;Workflow&#39;, fillcolor=&#39;#5FBF60&#39;]</span></span>
+<span id="cb1-54"><a href="index.html#cb1-54" tabindex="-1"></a><span class="st">  H2 [label=&#39;Tools &amp; Software&#39;, fillcolor=&#39;#5FBF60&#39;]</span></span>
+<span id="cb1-55"><a href="index.html#cb1-55" tabindex="-1"></a><span class="st">  H3 [label=&#39;Performance Evaluation&#39;, fillcolor=&#39;#5FBF60&#39;]</span></span>
+<span id="cb1-56"><a href="index.html#cb1-56" tabindex="-1"></a><span class="st">  H1a [label=&#39;Data Collection → Cleaning → Modeling → Evaluation → Deployment&#39;, fillcolor=&#39;#A8E0A8&#39;]</span></span>
+<span id="cb1-57"><a href="index.html#cb1-57" tabindex="-1"></a><span class="st">  H2a [label=&#39;Python, R, SQL, Power BI, Tableau&#39;, fillcolor=&#39;#A8E0A8&#39;]</span></span>
+<span id="cb1-58"><a href="index.html#cb1-58" tabindex="-1"></a><span class="st">  H3a [label=&#39;Metrics: Accuracy, Precision, Recall, RMSE, F1&#39;, fillcolor=&#39;#A8E0A8&#39;]</span></span>
+<span id="cb1-59"><a href="index.html#cb1-59" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="index.html#cb1-60" tabindex="-1"></a><span class="st">  # ==== CONNECTIONS ====</span></span>
+<span id="cb1-61"><a href="index.html#cb1-61" tabindex="-1"></a><span class="st">  PA -&gt; What</span></span>
+<span id="cb1-62"><a href="index.html#cb1-62" tabindex="-1"></a><span class="st">  PA -&gt; Why</span></span>
+<span id="cb1-63"><a href="index.html#cb1-63" tabindex="-1"></a><span class="st">  PA -&gt; When</span></span>
+<span id="cb1-64"><a href="index.html#cb1-64" tabindex="-1"></a><span class="st">  PA -&gt; Where</span></span>
+<span id="cb1-65"><a href="index.html#cb1-65" tabindex="-1"></a><span class="st">  PA -&gt; Who</span></span>
+<span id="cb1-66"><a href="index.html#cb1-66" tabindex="-1"></a><span class="st">  PA -&gt; How</span></span>
+<span id="cb1-67"><a href="index.html#cb1-67" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="index.html#cb1-68" tabindex="-1"></a><span class="st">  # WHAT</span></span>
+<span id="cb1-69"><a href="index.html#cb1-69" tabindex="-1"></a><span class="st">  What -&gt; W1</span></span>
+<span id="cb1-70"><a href="index.html#cb1-70" tabindex="-1"></a><span class="st">  What -&gt; W2</span></span>
+<span id="cb1-71"><a href="index.html#cb1-71" tabindex="-1"></a><span class="st">  What -&gt; W3</span></span>
+<span id="cb1-72"><a href="index.html#cb1-72" tabindex="-1"></a><span class="st">  W1 -&gt; W1a</span></span>
+<span id="cb1-73"><a href="index.html#cb1-73" tabindex="-1"></a><span class="st">  W2 -&gt; W2a</span></span>
+<span id="cb1-74"><a href="index.html#cb1-74" tabindex="-1"></a><span class="st">  W3 -&gt; W3a</span></span>
+<span id="cb1-75"><a href="index.html#cb1-75" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="index.html#cb1-76" tabindex="-1"></a><span class="st">  # WHY</span></span>
+<span id="cb1-77"><a href="index.html#cb1-77" tabindex="-1"></a><span class="st">  Why -&gt; Y1</span></span>
+<span id="cb1-78"><a href="index.html#cb1-78" tabindex="-1"></a><span class="st">  Why -&gt; Y2</span></span>
+<span id="cb1-79"><a href="index.html#cb1-79" tabindex="-1"></a><span class="st">  Y1 -&gt; Y1a</span></span>
+<span id="cb1-80"><a href="index.html#cb1-80" tabindex="-1"></a><span class="st">  Y1 -&gt; Y1b</span></span>
+<span id="cb1-81"><a href="index.html#cb1-81" tabindex="-1"></a><span class="st">  Y2 -&gt; Y2a</span></span>
+<span id="cb1-82"><a href="index.html#cb1-82" tabindex="-1"></a></span>
+<span id="cb1-83"><a href="index.html#cb1-83" tabindex="-1"></a><span class="st">  # WHEN</span></span>
+<span id="cb1-84"><a href="index.html#cb1-84" tabindex="-1"></a><span class="st">  When -&gt; We1</span></span>
+<span id="cb1-85"><a href="index.html#cb1-85" tabindex="-1"></a><span class="st">  We1 -&gt; We1a</span></span>
+<span id="cb1-86"><a href="index.html#cb1-86" tabindex="-1"></a></span>
+<span id="cb1-87"><a href="index.html#cb1-87" tabindex="-1"></a><span class="st">  # WHERE</span></span>
+<span id="cb1-88"><a href="index.html#cb1-88" tabindex="-1"></a><span class="st">  Where -&gt; Wh1</span></span>
+<span id="cb1-89"><a href="index.html#cb1-89" tabindex="-1"></a><span class="st">  Wh1 -&gt; Wh1a</span></span>
+<span id="cb1-90"><a href="index.html#cb1-90" tabindex="-1"></a><span class="st">  Wh1 -&gt; Wh1b</span></span>
+<span id="cb1-91"><a href="index.html#cb1-91" tabindex="-1"></a></span>
+<span id="cb1-92"><a href="index.html#cb1-92" tabindex="-1"></a><span class="st">  # WHO</span></span>
+<span id="cb1-93"><a href="index.html#cb1-93" tabindex="-1"></a><span class="st">  Who -&gt; Wo1</span></span>
+<span id="cb1-94"><a href="index.html#cb1-94" tabindex="-1"></a><span class="st">  Wo1 -&gt; Wo1a</span></span>
+<span id="cb1-95"><a href="index.html#cb1-95" tabindex="-1"></a><span class="st">  Wo1 -&gt; Wo1b</span></span>
+<span id="cb1-96"><a href="index.html#cb1-96" tabindex="-1"></a><span class="st">  Wo1 -&gt; Wo1c</span></span>
+<span id="cb1-97"><a href="index.html#cb1-97" tabindex="-1"></a></span>
+<span id="cb1-98"><a href="index.html#cb1-98" tabindex="-1"></a><span class="st">  # HOW</span></span>
+<span id="cb1-99"><a href="index.html#cb1-99" tabindex="-1"></a><span class="st">  How -&gt; H1</span></span>
+<span id="cb1-100"><a href="index.html#cb1-100" tabindex="-1"></a><span class="st">  How -&gt; H2</span></span>
+<span id="cb1-101"><a href="index.html#cb1-101" tabindex="-1"></a><span class="st">  How -&gt; H3</span></span>
+<span id="cb1-102"><a href="index.html#cb1-102" tabindex="-1"></a><span class="st">  H1 -&gt; H1a</span></span>
+<span id="cb1-103"><a href="index.html#cb1-103" tabindex="-1"></a><span class="st">  H2 -&gt; H2a</span></span>
+<span id="cb1-104"><a href="index.html#cb1-104" tabindex="-1"></a><span class="st">  H3 -&gt; H3a</span></span>
+<span id="cb1-105"><a href="index.html#cb1-105" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb1-106"><a href="index.html#cb1-106" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-de27009f6a207a93defc" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-de27009f6a207a93defc">{"x":{"diagram":"\ndigraph predictive_analytics {\n  graph [layout = dot, rankdir = LR, bgcolor=\"white\"]\n\n  node [shape=box, style=filled, fontname=Helvetica, fontsize=18, penwidth=1.5]\n\n  # ==== CENTRAL NODE ====\n  PA [label=\"PREDICTIVE ANALYTICS\", shape=ellipse, fillcolor=\"#F2F2F2\", fontsize=24, width=3.5, height=1.2]\n\n  # ==== MAIN CATEGORIES ====\n  What   [label=\"What?\",   fillcolor=\"#0B3D91\", fontcolor=\"white\"]\n  Why    [label=\"Why?\",    fillcolor=\"#8B004B\", fontcolor=\"white\"]\n  When   [label=\"When?\",   fillcolor=\"#A0522D\", fontcolor=\"white\"]\n  Where  [label=\"Where?\",  fillcolor=\"#4B0082\", fontcolor=\"white\"]\n  Who    [label=\"Who?\",    fillcolor=\"#7B241C\", fontcolor=\"white\"]\n  How    [label=\"How?\",    fillcolor=\"#145A32\", fontcolor=\"white\"]\n\n  # ==== SUBCATEGORIES ====\n  # --- WHAT ---\n  W1 [label=\"Definition & Types\", fillcolor=\"#5B8DD9\"]\n  W2 [label=\"Techniques\", fillcolor=\"#5B8DD9\"]\n  W3 [label=\"Data Types\", fillcolor=\"#5B8DD9\"]\n  W1a [label=\"Descriptive vs Predictive\", fillcolor=\"#B3C9F1\"]\n  W2a [label=\"Regression, Classification, Clustering, Time Series\", fillcolor=\"#B3C9F1\"]\n  W3a [label=\"Structured & Unstructured Data\", fillcolor=\"#B3C9F1\"]\n\n  # --- WHY ---\n  Y1 [label=\"Benefits & Business Impact\", fillcolor=\"#D96CA3\"]\n  Y2 [label=\"ROI\", fillcolor=\"#D96CA3\"]\n  Y1a [label=\"Decision Making\", fillcolor=\"#F4B9D0\"]\n  Y1b [label=\"Risk Reduction\", fillcolor=\"#F4B9D0\"]\n  Y2a [label=\"Cost Savings & Revenue Gain\", fillcolor=\"#F4B9D0\"]\n\n  # --- WHEN ---\n  We1 [label=\"When to Apply\", fillcolor=\"#C28840\"]\n  We1a [label=\"Planning, Operations, Marketing, Risk Assessment\", fillcolor=\"#E3B673\"]\n\n  # --- WHERE ---\n  Wh1 [label=\"Industries & Case Studies\", fillcolor=\"#8B66D9\"]\n  Wh1a [label=\"Finance, Banking, Healthcare, Supply Chain\", fillcolor=\"#C9AFE6\"]\n  Wh1b [label=\"Netflix Recommendations, Walmart Forecasting\", fillcolor=\"#C9AFE6\"]\n\n  # --- WHO ---\n  Wo1 [label=\"Roles\", fillcolor=\"#D96B6B\"]\n  Wo1a [label=\"Data Scientist\", fillcolor=\"#F4A6A6\"]\n  Wo1b [label=\"Business Analyst\", fillcolor=\"#F4A6A6\"]\n  Wo1c [label=\"Domain Expert\", fillcolor=\"#F4A6A6\"]\n\n  # --- HOW ---\n  H1 [label=\"Workflow\", fillcolor=\"#5FBF60\"]\n  H2 [label=\"Tools & Software\", fillcolor=\"#5FBF60\"]\n  H3 [label=\"Performance Evaluation\", fillcolor=\"#5FBF60\"]\n  H1a [label=\"Data Collection → Cleaning → Modeling → Evaluation → Deployment\", fillcolor=\"#A8E0A8\"]\n  H2a [label=\"Python, R, SQL, Power BI, Tableau\", fillcolor=\"#A8E0A8\"]\n  H3a [label=\"Metrics: Accuracy, Precision, Recall, RMSE, F1\", fillcolor=\"#A8E0A8\"]\n\n  # ==== CONNECTIONS ====\n  PA -> What\n  PA -> Why\n  PA -> When\n  PA -> Where\n  PA -> Who\n  PA -> How\n\n  # WHAT\n  What -> W1\n  What -> W2\n  What -> W3\n  W1 -> W1a\n  W2 -> W2a\n  W3 -> W3a\n\n  # WHY\n  Why -> Y1\n  Why -> Y2\n  Y1 -> Y1a\n  Y1 -> Y1b\n  Y2 -> Y2a\n\n  # WHEN\n  When -> We1\n  We1 -> We1a\n\n  # WHERE\n  Where -> Wh1\n  Wh1 -> Wh1a\n  Wh1 -> Wh1b\n\n  # WHO\n  Who -> Wo1\n  Wo1 -> Wo1a\n  Wo1 -> Wo1b\n  Wo1 -> Wo1c\n\n  # HOW\n  How -> H1\n  How -> H2\n  How -> H3\n  H1 -> H1a\n  H2 -> H2a\n  H3 -> H3a\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="predictive-analysis" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Predictive Analysis<a href="index.html#predictive-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="definition-of-predictive-analysis" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Definition of Predictive Analysis<a href="index.html#definition-of-predictive-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Predictive Analytics</strong> can be defined as a data-driven discipline that uses statistical models, machine learning algorithms, and historical data to estimate or forecast future outcomes. Rather than merely describing past events, it focuses on identifying patterns and relationships that can inform decision-making and strategic planning. In essence, predictive analytics transforms raw data into actionable insights by anticipating what is likely to occur under specific conditions [1]</p>
+</div>
+<div id="types-techniques-and-data-in-predictive-analytics" class="section level3 hasAnchor" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Types, Techniques, and Data in Predictive Analytics<a href="index.html#types-techniques-and-data-in-predictive-analytics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Predictive analytics encompasses various approaches and data forms that collectively enable accurate forecasting and decision-making. Understanding these dimensions helps researchers and practitioners select appropriate analytical methods based on the problem context, data availability, and computational requirements. The following table summarizes the main types of predictive analytics, the techniques commonly employed, and the data types most frequently used in practice. Each component contributes to building models that are not only statistically sound but also operationally relevant in business, scientific, and technological domains [1]</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb2-2"><a href="index.html#cb2-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb2-3"><a href="index.html#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="index.html#cb2-4" tabindex="-1"></a><span class="co"># Types of Predictive Analytics</span></span>
+<span id="cb2-5"><a href="index.html#cb2-5" tabindex="-1"></a>types <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb2-6"><a href="index.html#cb2-6" tabindex="-1"></a>  <span class="at">Type =</span> <span class="fu">c</span>(<span class="st">&quot;Classification&quot;</span>, <span class="st">&quot;Regression&quot;</span>, <span class="st">&quot;Clustering&quot;</span>, <span class="st">&quot;Time Series Forecasting&quot;</span>, <span class="st">&quot;Anomaly Detection&quot;</span>),</span>
+<span id="cb2-7"><a href="index.html#cb2-7" tabindex="-1"></a>  <span class="at">Description =</span> <span class="fu">c</span>(</span>
+<span id="cb2-8"><a href="index.html#cb2-8" tabindex="-1"></a>    <span class="st">&quot;Assigns data to predefined categories&quot;</span>,</span>
+<span id="cb2-9"><a href="index.html#cb2-9" tabindex="-1"></a>    <span class="st">&quot;Estimates continuous numerical outcomes&quot;</span>,</span>
+<span id="cb2-10"><a href="index.html#cb2-10" tabindex="-1"></a>    <span class="st">&quot;Identifies natural groupings without labels&quot;</span>,</span>
+<span id="cb2-11"><a href="index.html#cb2-11" tabindex="-1"></a>    <span class="st">&quot;Analyzes temporal patterns for future prediction&quot;</span>,</span>
+<span id="cb2-12"><a href="index.html#cb2-12" tabindex="-1"></a>    <span class="st">&quot;Detects unusual or abnormal data points&quot;</span></span>
+<span id="cb2-13"><a href="index.html#cb2-13" tabindex="-1"></a>  ),</span>
+<span id="cb2-14"><a href="index.html#cb2-14" tabindex="-1"></a>  <span class="at">Example =</span> <span class="fu">c</span>(</span>
+<span id="cb2-15"><a href="index.html#cb2-15" tabindex="-1"></a>    <span class="st">&quot;Predicting customer churn&quot;</span>,</span>
+<span id="cb2-16"><a href="index.html#cb2-16" tabindex="-1"></a>    <span class="st">&quot;Forecasting sales or temperature&quot;</span>,</span>
+<span id="cb2-17"><a href="index.html#cb2-17" tabindex="-1"></a>    <span class="st">&quot;Market segmentation&quot;</span>,</span>
+<span id="cb2-18"><a href="index.html#cb2-18" tabindex="-1"></a>    <span class="st">&quot;Stock prices, demand levels&quot;</span>,</span>
+<span id="cb2-19"><a href="index.html#cb2-19" tabindex="-1"></a>    <span class="st">&quot;Fraud detection&quot;</span></span>
+<span id="cb2-20"><a href="index.html#cb2-20" tabindex="-1"></a>  )</span>
+<span id="cb2-21"><a href="index.html#cb2-21" tabindex="-1"></a>)</span>
+<span id="cb2-22"><a href="index.html#cb2-22" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="index.html#cb2-23" tabindex="-1"></a>types <span class="sc">%&gt;%</span></span>
+<span id="cb2-24"><a href="index.html#cb2-24" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">&quot;html&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Types of Predictive Analytics&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-25"><a href="index.html#cb2-25" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-26"><a href="index.html#cb2-26" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">background =</span> <span class="st">&quot;#D3D3D3&quot;</span>)</span></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-2">Table 1.1: </span>Types of Predictive Analytics
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;background-color: rgba(211, 211, 211, 255) !important;">
+Type
+</th>
+<th style="text-align:left;font-weight: bold;background-color: rgba(211, 211, 211, 255) !important;">
+Description
+</th>
+<th style="text-align:left;font-weight: bold;background-color: rgba(211, 211, 211, 255) !important;">
+Example
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Classification
+</td>
+<td style="text-align:left;">
+Assigns data to predefined categories
+</td>
+<td style="text-align:left;">
+Predicting customer churn
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Regression
+</td>
+<td style="text-align:left;">
+Estimates continuous numerical outcomes
+</td>
+<td style="text-align:left;">
+Forecasting sales or temperature
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Clustering
+</td>
+<td style="text-align:left;">
+Identifies natural groupings without labels
+</td>
+<td style="text-align:left;">
+Market segmentation
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Time Series Forecasting
+</td>
+<td style="text-align:left;">
+Analyzes temporal patterns for future prediction
+</td>
+<td style="text-align:left;">
+Stock prices, demand levels
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Anomaly Detection
+</td>
+<td style="text-align:left;">
+Detects unusual or abnormal data points
+</td>
+<td style="text-align:left;">
+Fraud detection
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" tabindex="-1"></a><span class="co"># Techniques in Predictive Analytics</span></span>
+<span id="cb3-2"><a href="index.html#cb3-2" tabindex="-1"></a>techniques <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb3-3"><a href="index.html#cb3-3" tabindex="-1"></a>  <span class="at">Technique =</span> <span class="fu">c</span>(<span class="st">&quot;Linear &amp; Logistic Regression&quot;</span>, <span class="st">&quot;Decision Trees &amp; Random Forests&quot;</span>, </span>
+<span id="cb3-4"><a href="index.html#cb3-4" tabindex="-1"></a>                <span class="st">&quot;Support Vector Machines (SVM)&quot;</span>, <span class="st">&quot;Neural Networks &amp; Deep Learning&quot;</span>,</span>
+<span id="cb3-5"><a href="index.html#cb3-5" tabindex="-1"></a>                <span class="st">&quot;Ensemble Learning&quot;</span>, <span class="st">&quot;Bayesian Methods&quot;</span>),</span>
+<span id="cb3-6"><a href="index.html#cb3-6" tabindex="-1"></a>  <span class="at">Description =</span> <span class="fu">c</span>(</span>
+<span id="cb3-7"><a href="index.html#cb3-7" tabindex="-1"></a>    <span class="st">&quot;Statistical models for continuous and categorical prediction&quot;</span>,</span>
+<span id="cb3-8"><a href="index.html#cb3-8" tabindex="-1"></a>    <span class="st">&quot;Tree-based methods capturing nonlinear relationships&quot;</span>,</span>
+<span id="cb3-9"><a href="index.html#cb3-9" tabindex="-1"></a>    <span class="st">&quot;Handles high-dimensional classification/regression&quot;</span>,</span>
+<span id="cb3-10"><a href="index.html#cb3-10" tabindex="-1"></a>    <span class="st">&quot;Models complex, unstructured data&quot;</span>,</span>
+<span id="cb3-11"><a href="index.html#cb3-11" tabindex="-1"></a>    <span class="st">&quot;Combines multiple models to improve accuracy&quot;</span>,</span>
+<span id="cb3-12"><a href="index.html#cb3-12" tabindex="-1"></a>    <span class="st">&quot;Uses prior knowledge and probabilistic reasoning&quot;</span></span>
+<span id="cb3-13"><a href="index.html#cb3-13" tabindex="-1"></a>  ),</span>
+<span id="cb3-14"><a href="index.html#cb3-14" tabindex="-1"></a>  <span class="at">Use_Case =</span> <span class="fu">c</span>(</span>
+<span id="cb3-15"><a href="index.html#cb3-15" tabindex="-1"></a>    <span class="st">&quot;Predicting revenue or customer behavior&quot;</span>,</span>
+<span id="cb3-16"><a href="index.html#cb3-16" tabindex="-1"></a>    <span class="st">&quot;Credit scoring, feature importance&quot;</span>,</span>
+<span id="cb3-17"><a href="index.html#cb3-17" tabindex="-1"></a>    <span class="st">&quot;Image recognition, text classification&quot;</span>,</span>
+<span id="cb3-18"><a href="index.html#cb3-18" tabindex="-1"></a>    <span class="st">&quot;Image, audio, text analysis&quot;</span>,</span>
+<span id="cb3-19"><a href="index.html#cb3-19" tabindex="-1"></a>    <span class="st">&quot;Kaggle competitions, predictive modeling&quot;</span>,</span>
+<span id="cb3-20"><a href="index.html#cb3-20" tabindex="-1"></a>    <span class="st">&quot;Medical diagnosis, risk assessment&quot;</span></span>
+<span id="cb3-21"><a href="index.html#cb3-21" tabindex="-1"></a>  )</span>
+<span id="cb3-22"><a href="index.html#cb3-22" tabindex="-1"></a>)</span>
+<span id="cb3-23"><a href="index.html#cb3-23" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="index.html#cb3-24" tabindex="-1"></a>techniques <span class="sc">%&gt;%</span></span>
+<span id="cb3-25"><a href="index.html#cb3-25" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">&quot;html&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Techniques in Predictive Analytics&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-26"><a href="index.html#cb3-26" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-27"><a href="index.html#cb3-27" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">background =</span> <span class="st">&quot;#D3D3D3&quot;</span>)</span></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-2">Table 1.1: </span>Techniques in Predictive Analytics
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;background-color: rgba(211, 211, 211, 255) !important;">
+Technique
+</th>
+<th style="text-align:left;font-weight: bold;background-color: rgba(211, 211, 211, 255) !important;">
+Description
+</th>
+<th style="text-align:left;font-weight: bold;background-color: rgba(211, 211, 211, 255) !important;">
+Use_Case
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Linear &amp; Logistic Regression
+</td>
+<td style="text-align:left;">
+Statistical models for continuous and categorical prediction
+</td>
+<td style="text-align:left;">
+Predicting revenue or customer behavior
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Decision Trees &amp; Random Forests
+</td>
+<td style="text-align:left;">
+Tree-based methods capturing nonlinear relationships
+</td>
+<td style="text-align:left;">
+Credit scoring, feature importance
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Support Vector Machines (SVM)
+</td>
+<td style="text-align:left;">
+Handles high-dimensional classification/regression
+</td>
+<td style="text-align:left;">
+Image recognition, text classification
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Neural Networks &amp; Deep Learning
+</td>
+<td style="text-align:left;">
+Models complex, unstructured data
+</td>
+<td style="text-align:left;">
+Image, audio, text analysis
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ensemble Learning
+</td>
+<td style="text-align:left;">
+Combines multiple models to improve accuracy
+</td>
+<td style="text-align:left;">
+Kaggle competitions, predictive modeling
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bayesian Methods
+</td>
+<td style="text-align:left;">
+Uses prior knowledge and probabilistic reasoning
+</td>
+<td style="text-align:left;">
+Medical diagnosis, risk assessment
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" tabindex="-1"></a><span class="co"># Data Types Used in Predictive Analytics</span></span>
+<span id="cb4-2"><a href="index.html#cb4-2" tabindex="-1"></a>data_types <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-3"><a href="index.html#cb4-3" tabindex="-1"></a>  <span class="at">Data_Type =</span> <span class="fu">c</span>(<span class="st">&quot;Structured&quot;</span>, <span class="st">&quot;Unstructured&quot;</span>, <span class="st">&quot;Semi-Structured&quot;</span>, <span class="st">&quot;Time-Series&quot;</span>),</span>
+<span id="cb4-4"><a href="index.html#cb4-4" tabindex="-1"></a>  <span class="at">Description =</span> <span class="fu">c</span>(</span>
+<span id="cb4-5"><a href="index.html#cb4-5" tabindex="-1"></a>    <span class="st">&quot;Tabular and numeric data&quot;</span>,</span>
+<span id="cb4-6"><a href="index.html#cb4-6" tabindex="-1"></a>    <span class="st">&quot;Text, images, audio, video&quot;</span>,</span>
+<span id="cb4-7"><a href="index.html#cb4-7" tabindex="-1"></a>    <span class="st">&quot;Partial structure like JSON or XML&quot;</span>,</span>
+<span id="cb4-8"><a href="index.html#cb4-8" tabindex="-1"></a>    <span class="st">&quot;Sequential data indexed by time&quot;</span></span>
+<span id="cb4-9"><a href="index.html#cb4-9" tabindex="-1"></a>  ),</span>
+<span id="cb4-10"><a href="index.html#cb4-10" tabindex="-1"></a>  <span class="at">Example =</span> <span class="fu">c</span>(</span>
+<span id="cb4-11"><a href="index.html#cb4-11" tabindex="-1"></a>    <span class="st">&quot;Database records, spreadsheets&quot;</span>,</span>
+<span id="cb4-12"><a href="index.html#cb4-12" tabindex="-1"></a>    <span class="st">&quot;Social media posts, photos&quot;</span>,</span>
+<span id="cb4-13"><a href="index.html#cb4-13" tabindex="-1"></a>    <span class="st">&quot;Web logs, IoT sensor data&quot;</span>,</span>
+<span id="cb4-14"><a href="index.html#cb4-14" tabindex="-1"></a>    <span class="st">&quot;Stock prices, temperature trends&quot;</span></span>
+<span id="cb4-15"><a href="index.html#cb4-15" tabindex="-1"></a>  )</span>
+<span id="cb4-16"><a href="index.html#cb4-16" tabindex="-1"></a>)</span>
+<span id="cb4-17"><a href="index.html#cb4-17" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="index.html#cb4-18" tabindex="-1"></a>data_types <span class="sc">%&gt;%</span></span>
+<span id="cb4-19"><a href="index.html#cb4-19" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="st">&quot;html&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Data Types Used in Predictive Analytics&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-20"><a href="index.html#cb4-20" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>, <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-21"><a href="index.html#cb4-21" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">background =</span> <span class="st">&quot;#D3D3D3&quot;</span>)</span></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-2">Table 1.1: </span>Data Types Used in Predictive Analytics
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;background-color: rgba(211, 211, 211, 255) !important;">
+Data_Type
+</th>
+<th style="text-align:left;font-weight: bold;background-color: rgba(211, 211, 211, 255) !important;">
+Description
+</th>
+<th style="text-align:left;font-weight: bold;background-color: rgba(211, 211, 211, 255) !important;">
+Example
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Structured
+</td>
+<td style="text-align:left;">
+Tabular and numeric data
+</td>
+<td style="text-align:left;">
+Database records, spreadsheets
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Unstructured
+</td>
+<td style="text-align:left;">
+Text, images, audio, video
+</td>
+<td style="text-align:left;">
+Social media posts, photos
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Semi-Structured
+</td>
+<td style="text-align:left;">
+Partial structure like JSON or XML
+</td>
+<td style="text-align:left;">
+Web logs, IoT sensor data
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Time-Series
+</td>
+<td style="text-align:left;">
+Sequential data indexed by time
+</td>
+<td style="text-align:left;">
+Stock prices, temperature trends
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="predictive-analysis-concepts" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Predictive Analysis Concepts<a href="index.html#predictive-analysis-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="why-use-predictive-analysis" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Why Use Predictive Analysis?<a href="index.html#why-use-predictive-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Predictive Analytics (PA) is a systematic approach used to forecast future events, reduce uncertainty, and guide strategic decision-making. By leveraging historical, real-time, and contextual data, organizations can extract actionable insights, detect patterns, and anticipate outcomes that would otherwise remain hidden [1].</p>
+<p>Predictive Analytics serves as a strategic nexus that links data, decision-making, and business value. At a conceptual level, PA enables organizations to transform raw data into foresight, aligning operational execution with strategic objectives. The correlation is holistic: accurate predictions improve decision quality, which in turn enhances efficiency, mitigates risks, strengthens competitive positioning, and ultimately maximizes return on investment. In essence, PA integrates multiple organizational dimensions—operational, financial, and strategic—into a coherent, data-driven framework, ensuring that analytical insights directly translate into tangible business outcomes.</p>
+<div id="business-impact" class="section level4 hasAnchor" number="1.2.1.1">
+<h4><span class="header-section-number">1.2.1.1</span> Business Impact<a href="index.html#business-impact" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The application of Predictive Analytics generates substantial business value by enhancing operational efficiency, streamlining processes, and improving the quality of decisions. Organizations can proactively identify opportunities, optimize resource allocation, and reduce waste, which in turn improves profitability and strengthens long-term strategic positioning. Additionally, PA allows firms to tailor products and services to customer needs, thereby fostering stronger relationships and increased loyalty.</p>
+</div>
+<div id="return-of-investment" class="section level4 hasAnchor" number="1.2.1.2">
+<h4><span class="header-section-number">1.2.1.2</span> Return of Investment<a href="index.html#return-of-investment" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Predictive Analytics delivers quantifiable financial benefits that are directly linked to measurable business outcomes. By identifying high-value opportunities, mitigating risks, and reducing unnecessary costs, organizations can achieve a demonstrable ROI. The ability to justify investments in data infrastructure, analytics tools, and talent through tangible returns reinforces the strategic importance of PA in modern enterprises.</p>
+<p><span class="math display">\[\text{ROI (%)} = \frac{\text{Net Benefit (Gain) from Investment} - \text{Cost of Investment}}{\text{Cost of Investment}} \times 100\]</span></p>
+<p>Where:</p>
+<ul>
+<li><p><strong>Net Benefit / Gain</strong> = additional revenue or cost savings generated by PA.</p></li>
+<li><p><strong>Cost of Investment</strong> = total expenses related to software, tools, infrastructure, and human resources.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="references" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> References<a href="index.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a href="https://bookdown.org/content/a142b172-69b2-436d-bdb0-9da6d046a0f9/01-Introduction.html" class="uri">https://bookdown.org/content/a142b172-69b2-436d-bdb0-9da6d046a0f9/01-Introduction.html</a></p>
+<p>[1] Han, Pei, &amp; Tong, 2022; James et al., 2021; Kuhn &amp; Silge, 2022.</p>
 
+</div>
 </div>
             </section>
 
@@ -134,7 +702,7 @@ gitbook.start({
     "github": false,
     "facebook": true,
     "twitter": true,
-    "linkedin": true,
+    "linkedin": false,
     "weibo": false,
     "instapaper": false,
     "vk": false,
@@ -148,7 +716,7 @@ gitbook.start({
   },
   "edit": {
     "link": "https://github.com/urvynous/Analysis-and-Predictive-Modelling/edit/main/index.Rmd",
-    "text": "Take a look at GitHub"
+    "text": "Edit"
   },
   "history": {
     "link": null,
@@ -167,16 +735,26 @@ gitbook.start({
     "collapse": "subsection"
   },
   "toolbar": {
-    "position": "fixed"
-  },
-  "toc_depth": 3,
-  "collapse": "section",
-  "toc_float": true,
-  "toc_collapse": "subsection"
+    "position": "none"
+  }
 });
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@ bookdown::gitbook:
     toc:
       before: |
         <div class="sidebar-header">
-          <img src="images/logo.png" class="sidebar-logo">
+          <img src="images/azky.jpg" class="sidebar-logo">
           <h2 class="sidebar-title">Analysis and Predictive Modelling</h2>
           <div class="sidebar-icons">
             <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
@@ -15,9 +15,15 @@ bookdown::gitbook:
         </div>
       after: |
         <div class="sidebar-footer">
-          <p><a href="#">Edit this page</a></p>
-          <p><a href="#">Report an issue</a></p>
+         <p><strong>Institut Teknologi Sains Bandung</strong><br>
+          <span>Data Science Program</span></p>
+          <p class="sidebar-author">
+            <strong>Author:</strong> Siti Azkya Nurhalima<br>
+            <strong>Date:</strong> 25-10-23
+          </p>
         </div>
+    toolbar:
+      position: none
     download: ["pdf", "epub"]
     fontsettings:
       theme: white

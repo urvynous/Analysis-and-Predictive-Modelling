@@ -1,36 +1,212 @@
-/* ====== Right-side TOC (Per Chapter) ====== */
-.book .book-body .page-inner .page-toc {
-  position: fixed;
-  right: 30px;
-  top: 100px;
-  width: 220px;
-  background: #ffffff;
-  border-left: 3px solid #13B4C3;
-  padding-left: 15px;
-  max-height: 80vh;
-  overflow-y: auto;
-  font-size: 0.9em;
-  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+/* ====== BOOKDOWN CUSTOM CLEAN STYLE ====== */
+
+/* --- BODY --- */
+body {
+  font-family: "Poppins", "Segoe UI", "Helvetica Neue", sans-serif;
+  line-height: 1.7;
+  color: #222;
+  background-color: #fff;
 }
 
-.book .book-body .page-inner .page-toc h2 {
+/* --- HEADERS --- */
+h1, h2, h3, h4 {
+  font-family: "Poppins", sans-serif;
   color: #0A4D68;
   font-weight: 600;
-  font-size: 1em;
-  margin-bottom: 5px;
+  margin-top: 1.2em;
 }
 
-.book .book-body .page-inner .page-toc ul {
-  list-style: none;
-  padding-left: 10px;
-}
-
-.book .book-body .page-inner .page-toc li a {
+/* --- LINKS --- */
+a {
   color: #0A4D68;
   text-decoration: none;
 }
+a:hover {
+  text-decoration: underline;
+}
 
-.book .book-body .page-inner .page-toc li a:hover {
+/* --- SIDEBAR / TOC --- */
+.book .book-summary {
+  background: #f8f9fa;
+  border-right: 1px solid #e0e0e0;
+  padding-top: 10px;
+}
+
+/* === LOGO === */
+.book .book-summary img {
+  display: block;
+  margin: 25px auto 10px auto;
+  border-radius: 50%;
+  width: 120px;
+}
+
+/* === JUDUL DAN TEKS === */
+.book .book-summary h2 {
+  text-align: center;
+  color: #0A4D68;
+  font-size: 1.2em;
+  margin: 10px 0;
+  font-weight: 600;
+}
+
+.book .book-summary p {
+  text-align: center;
+  font-size: 0.85em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+//* --- TOOLBAR ICON DI BAWAH LOGO --- */
+.book .book-summary .book-toolbar {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 10px;
+  margin: 15px 0 20px 0;
+}
+
+.book .book-summary .book-toolbar > a {
+  color: #0A4D68 !important;
+  font-size: 1.3em;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.book .book-summary .book-toolbar > a:hover {
+  color: #13B4C3 !important;
+  transform: scale(1.1);
+}
+
+/* --- SEARCH BAR --- */
+.book .book-summary .book-search {
+  width: 85%;
+  margin: 15px auto 20px auto;
+  display: block;
+}
+.book .book-summary .book-search input {
+  width: 100%;
+  border: 1px solid #13B4C3;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.9em;
+  color: #0A4D68;
+}
+.book .book-summary .book-search input::placeholder {
+  color: #9bbfcf;
+}
+
+/* --- CHAPTER LIST --- */
+.book .book-summary .summary {
+  margin-top: 10px;
+}
+.book .book-summary .summary li a {
+  color: #0A4D68;
+}
+.book .book-summary .summary li.active > a {
+  color: #13B4C3;
+  font-weight: 600;
+}
+
+/* --- HEADER ATAS DIHILANGIN --- */
+.book .book-header,
+.header,
+.navbar {
+  display: none !important;
+}
+
+/* --- CONTENT AREA --- */
+.book .book-body .page-wrapper .page-inner {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: #ffffff;
+}
+
+/* --- FLOATING TOC --- */
+.floating-toc {
+  position: fixed;
+  top: 100px;
+  right: 40px;
+  width: 230px;
+  background: #ffffff;
+  border-left: 3px solid #0A4D68;
+  padding: 10px 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  font-size: 0.9em;
+  z-index: 1000;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.floating-toc h2 {
+  font-size: 1em;
+  color: #0A4D68;
+  margin-bottom: 10px;
+}
+
+.floating-toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.floating-toc li {
+  margin-bottom: 5px;
+}
+
+.floating-toc li.sub {
+  margin-left: 15px;
+  font-size: 0.9em;
+}
+
+.floating-toc a {
+  color: #0A4D68;
+}
+
+.floating-toc a:hover {
   color: #13B4C3;
   text-decoration: underline;
+}
+
+/* --- TABLES & FIGURES --- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+table th {
+  background-color: #0A4D68;
+  color: white;
+}
+
+/* --- CODE BLOCK --- */
+pre, code {
+  background-color: #f6f8fa;
+  border-radius: 5px;
+  padding: 3px 6px;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 0.9em;
+}
+
+/* --- FOOTER SIDEBAR --- */
+.sidebar-footer {
+  text-align: center;
+  font-size: 0.85em;
+  color: #1A4E66;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 15px;
+  margin-top: 20px;
+}
+
+.sidebar-footer strong {
+  color: #0A4D68;
+}
+
+.sidebar-author {
+  margin-top: 10px;
+  font-size: 0.75em;
+  color: #3B6978;
 }

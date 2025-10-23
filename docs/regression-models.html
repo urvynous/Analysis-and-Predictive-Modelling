@@ -52,6 +52,30 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<!-- Floating TOC di kanan atas -->
+<div id="floating-toc" class="floating-toc"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const headers = document.querySelectorAll(".page-inner h2, .page-inner h3");
+  if (headers.length === 0) return;
+
+  const toc = document.getElementById("floating-toc");
+  const list = document.createElement("ul");
+
+  headers.forEach(h => {
+    const id = h.id || h.textContent.trim().replace(/\s+/g, "-").toLowerCase();
+    h.id = id;
+
+    const li = document.createElement("li");
+    li.className = h.tagName.toLowerCase() === "h3" ? "sub" : "";
+    li.innerHTML = `<a href="#${id}">${h.textContent}</a>`;
+    list.appendChild(li);
+  });
+
+  toc.appendChild(list);
+});
+</script>
 
 
 
@@ -73,15 +97,26 @@
       <nav role="navigation">
 
 <ul class="summary">
-<img src="images/azky.jpg" style="width:120px; display:block; margin:auto;">
-<h2 style="text-align:center; margin-top:10px; font-size:1.2em;">Analysis and Predictive Modelling</h2>
+<div class="sidebar-header">
+  <img src="images/logo.png" class="sidebar-logo">
+  <h2 class="sidebar-title">Analysis and Predictive Modelling</h2>
+  <div class="sidebar-icons">
+    <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
+    <a href="#" title="Share"><i class="fa fa-share-alt"></i></a>
+    <a href="#" title="External Link"><i class="fa fa-link"></i></a>
+    <a href="https://github.com/" title="GitHub"><i class="fa fa-github"></i></a>
+  </div>
+</div>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Predictive Analysis</a></li>
 <li class="chapter" data-level="2" data-path="regression-models.html"><a href="regression-models.html"><i class="fa fa-check"></i><b>2</b> Regression Models</a></li>
 <li class="chapter" data-level="3" data-path="a-caucus-race-and-a-long-tale.html"><a href="a-caucus-race-and-a-long-tale.html"><i class="fa fa-check"></i><b>3</b> A caucus-race and a long tale</a></li>
 <li class="divider"></li>
-<p style="text-align:center;">Institut Teknologi Sains Bandung<br><small>Data Science Program</small></p>
+<div class="sidebar-footer">
+  <p><a href="#">Edit this page</a></p>
+  <p><a href="#">Report an issue</a></p>
+</div>
 
 </ul>
 
@@ -128,7 +163,7 @@ gitbook.start({
     "github": false,
     "facebook": true,
     "twitter": true,
-    "linkedin": true,
+    "linkedin": false,
     "weibo": false,
     "instapaper": false,
     "vk": false,
@@ -142,7 +177,7 @@ gitbook.start({
   },
   "edit": {
     "link": "https://github.com/urvynous/Analysis-and-Predictive-Modelling/edit/main/02-tears.Rmd",
-    "text": "Take a look at GitHub"
+    "text": "Edit"
   },
   "history": {
     "link": null,
@@ -159,14 +194,7 @@ gitbook.start({
   },
   "toc": {
     "collapse": "subsection"
-  },
-  "toolbar": {
-    "position": "fixed"
-  },
-  "toc_depth": 3,
-  "collapse": "section",
-  "toc_float": true,
-  "toc_collapse": "subsection"
+  }
 });
 });
 </script>

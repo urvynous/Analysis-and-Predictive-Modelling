@@ -9,5 +9,5 @@ rmd_files:
   - index.Rmd
   - 02-tears.Rmd
   - 03-race.Rmd
-delete_merged_file: true
+
 
