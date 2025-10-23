@@ -1,0 +1,24 @@
+<!-- Floating TOC di kanan atas -->
+<div id="floating-toc" class="floating-toc"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const headers = document.querySelectorAll(".page-inner h2, .page-inner h3");
+  if (headers.length === 0) return;
+
+  const toc = document.getElementById("floating-toc");
+  const list = document.createElement("ul");
+
+  headers.forEach(h => {
+    const id = h.id || h.textContent.trim().replace(/\s+/g, "-").toLowerCase();
+    h.id = id;
+
+    const li = document.createElement("li");
+    li.className = h.tagName.toLowerCase() === "h3" ? "sub" : "";
+    li.innerHTML = `<a href="#${id}">${h.textContent}</a>`;
+    list.appendChild(li);
+  });
+
+  toc.appendChild(list);
+});
+</script>

@@ -34,3 +34,43 @@
   color: #13B4C3;
   text-decoration: underline;
 }
+
+/* === FLOATING TOC KANAN ATAS === */
+.floating-toc {
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  width: 230px;
+  background: #ffffff;
+  border-left: 3px solid #0A4D68;
+  padding: 10px 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  font-size: 0.9em;
+  z-index: 1000;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.floating-toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.floating-toc li {
+  margin-bottom: 5px;
+}
+
+.floating-toc li.sub {
+  margin-left: 15px;
+  font-size: 0.9em;
+}
+
+.floating-toc a {
+  color: #0A4D68;
+  text-decoration: none;
+}
+
+.floating-toc a:hover {
+  text-decoration: underline;
+}

@@ -1,38 +1,36 @@
-/* ====== Bookdown Custom Style ====== */
-
-/* Umum */
-body {
-  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
-  line-height: 1.6;
-  background-color: #ffffff;
-  color: #222;
+/* ====== Right-side TOC (Per Chapter) ====== */
+.book .book-body .page-inner .page-toc {
+  position: fixed;
+  right: 30px;
+  top: 100px;
+  width: 220px;
+  background: #ffffff;
+  border-left: 3px solid #13B4C3;
+  padding-left: 15px;
+  max-height: 80vh;
+  overflow-y: auto;
+  font-size: 0.9em;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
 }
 
-/* Judul */
-h1, h2, h3, h4 {
+.book .book-body .page-inner .page-toc h2 {
   color: #0A4D68;
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
+  font-size: 1em;
+  margin-bottom: 5px;
 }
 
-/* Sidebar (TOC) */
-.book .book-summary {
-  background-color: #f8f9fa;
-  border-right: 1px solid #e0e0e0;
+.book .book-body .page-inner .page-toc ul {
+  list-style: none;
+  padding-left: 10px;
 }
 
-/* Header */
-.book .book-header {
-  background: #0A4D68;
-  color: white;
-  text-align: center;
-}
-
-/* Link */
-a {
+.book .book-body .page-inner .page-toc li a {
   color: #0A4D68;
   text-decoration: none;
 }
-a:hover {
+
+.book .book-body .page-inner .page-toc li a:hover {
+  color: #13B4C3;
   text-decoration: underline;
 }

@@ -3,28 +3,25 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <img src="images/azky.jpg" style="width:120px; display:block; margin:auto;">
-        <h2 style="text-align:center; margin-top:10px; font-size:1.2em;">Analysis and Predictive Modelling</h2>
+        <div class="sidebar-header">
+          <img src="images/logo.png" class="sidebar-logo">
+          <h2 class="sidebar-title">Analysis and Predictive Modelling</h2>
+          <div class="sidebar-icons">
+            <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
+            <a href="#" title="Share"><i class="fa fa-share-alt"></i></a>
+            <a href="#" title="External Link"><i class="fa fa-link"></i></a>
+            <a href="https://github.com/" title="GitHub"><i class="fa fa-github"></i></a>
+          </div>
+        </div>
       after: |
-        <p style="text-align:center;">Institut Teknologi Sains Bandung<br><small>Data Science Program</small></p>
-    toolbar:
-      position: fixed
-    edit:
-      link: "https://github.com/urvynous/Analysis-and-Predictive-Modelling/edit/main/%s"
-      text: "Take a look at GitHub"
+        <div class="sidebar-footer">
+          <p><a href="#">Edit this page</a></p>
+          <p><a href="#">Report an issue</a></p>
+        </div>
     download: ["pdf", "epub"]
-    sharing:
-      facebook: true
-      twitter: true
-      linkedin: true
-      weibo: false
-      instapaper: false
-      vk: false
     fontsettings:
       theme: white
       family: sans
       size: 2
-    toc_depth: 3
-    collapse: section
-    toc_float: true
-    toc_collapse: subsection
+  includes:
+    in_header: toc_float.html
