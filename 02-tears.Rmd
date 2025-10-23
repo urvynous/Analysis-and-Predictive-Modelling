@@ -1,2 +1,340 @@
 # Regression Models
 
+## Definition of Regression Models
+
+Regression models are a fundamental class of statistical and machine learning techniques designed to quantify and predict the relationship between a dependent variable and one or more independent variables. Their primary objective is to estimate functional associations, enabling both inference and accurate prediction of unseen outcomes. While linear regression represents the simplest and most widely used form assuming a linear relationship between predictors and the response—more advanced variants, including logistic regression, Poisson regression, and generalized linear models, accommodate non-linear or categorical response structures. These models are widely applied across disciplines such as economics, finance, social sciences, and healthcare to extract actionable insights from data and guide evidence based decision-making [2].
+
+---
+
+## Regression Models and Types
+
+Regression models constitute a cornerstone of predictive analytics, providing a structured framework to model the dependence of a response variable on one or more explanatory variables. These models are broadly categorized into linear and non-linear types.
+
+
+### Linear Regression Models
+
+Linear regression models assume a straight-line relationship between predictors and the response, encompassing both simple linear regression (one predictor) and multiple linear regression (multiple predictors). They are particularly valued for interpretability, as coefficients directly quantify the marginal effect of each predictor on the response [3]. Linear regression models are foundational tools in predictive analytics, used to estimate the relationship between one or more independent variables and a continuous dependent variable. The primary types of linear models include:
+
+#### Simple Linear Regression (SLR)
+
+Simple Linear Regression models the relationship between a single predictor \(X\) and a response \(Y\) as a straight line:
+
+$$Y = \beta_0 + \beta_1 X + \epsilon$$
+
+- $(\beta_0)$: intercept  
+- $(\beta_1)$: slope coefficient  
+- $(\epsilon)$: random error term  
+
+SLR is highly interpretable and serves as the foundation for more complex regression models[3].
+
+
+#### Multiple Linear Regression (MLR)
+
+Multiple Linear Regression extends SLR to include multiple predictors:
+
+$$Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_k X_k + \epsilon$$
+
+Each coefficient represents the independent effect of its corresponding predictor on the response. MLR is widely used to understand the combined influence of multiple factors on outcomes [2].
+
+
+
+#### Polynomial Regression
+
+Polynomial Regression incorporates higher-order terms of predictors to capture non-linear trends:
+
+$$Y = \beta_0 + \beta_1 X + \beta_2 X^2 + \dots + \beta_n X^n + \epsilon$$
+
+Remains linear in parameters but allows modeling of curvature in relationships. Requires careful selection of polynomial degree to avoid overfitting [4].
+
+
+Key Considerations Across Linear Models
+
+- **Interpretability:** Coefficients can be interpreted in terms of marginal effects.  
+
+- **Assumptions:** Linearity, independence, homoscedasticity, and normality of errors should be checked. 
+
+- **Model Fit:** Metrics such as $(R^2)$, adjusted $(R^2)$, and residual analysis guide evaluation of model adequacy.  
+
+Linear regression models remain essential due to their balance of simplicity, interpretability, and predictive utility across domains like economics, marketing, healthcare, and operations research [3] [2].
+ 
+
+### Example: Simulate Dataset
+
+```{r echo=TRUE, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(plotly)
+
+set.seed(123)
+
+# Simulate linear data
+n <- 100
+X <- runif(n, 1, 20)
+Y_linear <- 3 + 1.5*X + rnorm(n, 0, 3)  # Linear relationship: Y = 3 + 1.5*X + noise
+
+data <- data.frame(X, Y_linear)
+
+# Fit linear model
+model_linear <- lm(Y_linear ~ X, data = data)
+
+# Add predicted values
+data <- data %>%
+  mutate(
+    Y_linear_pred = predict(model_linear, newdata = data)
+  )
+
+# Static-looking ggplot
+p <- ggplot(data, aes(x = X)) +
+  geom_point(aes(y = Y_linear, text = paste0("Y_linear: ", round(Y_linear,2))), color = "blue") +
+  geom_line(aes(y = Y_linear_pred), color = "red", linewidth = 1) +
+  labs(title = "Linear Regression Model",
+       x = "Predictor X",
+       y = "Response Y") +
+  theme_minimal()
+
+# Convert to interactive plotly, hover only on points
+ggplotly(p, tooltip = "text")
+
+```
+
+
+The interactive plot displays the relationship between the predictor variable $(X)$ and the response variable $(Y)$ in a simulated linear regression setting. Each blue point represents an observed data point, while the red line corresponds to the predicted values generated from the fitted linear model $(Y = 3 + 1.5X + \epsilon)$.  
+
+From the visualization, it is evident that there is a clear positive linear trend between $(X)$ and $(Y)$, as the predicted line closely follows the central tendency of the data points. The interactive hover feature allows for inspection of individual observations, highlighting how each point deviates from the regression line. This deviation represents the residuals, which are expected due to the added random noise.  
+
+Overall, the plot confirms that the linear model provides a good approximation of the underlying relationship, capturing the main pattern of the data while acknowledging natural variability.  
+
+ 
+---
+
+### Non-Linear Regression
+
+Non-linear regression models relax the linearity assumption, allowing transformations or polynomial terms to capture more complex relationships. Examples include polynomial regression, logarithmic, exponential, and generalized additive models [2]. The general multiple non-linear regression model can be expressed as:
+
+$$Y = \beta_0 + \beta_1 f_1(X_1) + \beta_2 f_2(X_2) + \dots + \beta_k f_k(X_k) + \epsilon$$
+
+where:  
+- $(Y)$ is the dependent variable (target).  
+- $(f_i(X_i))$ are non-linear transformations of predictors (e.g., polynomial, logarithmic, exponential).  
+- $(\beta_i)$ denotes the coefficient of each transformed predictor.  
+- $(\epsilon)$ represents the random error term.
+
+#### Polynomial Regression
+
+   Models the relationship as an $(n)$ th-degree polynomial of the predictor(s):
+
+$$Y = \beta_0 + \beta_1 X + \beta_2 X^2 + \dots + \beta_n X^n + \epsilon$$
+
+   Polynomial regression captures curvature in the data while remaining linear in parameters. It is often used in marketing, finance, and process optimization to capture accelerating or decelerating trends [4].
+
+
+#### Logarithmic Regression
+
+   Useful when changes in the response decrease as the predictor increases:
+
+$$Y = \beta_0 + \beta_1 \log(X) + \epsilon$$
+  
+  Common in modeling diminishing returns, such as advertising effectiveness.
+
+#### Exponential Regression
+
+   Suitable for modeling growth or decay processes:
+
+$$Y = \beta_0 e^{\beta_1 X} + \epsilon$$
+
+   Widely applied in population growth, reliability, or sales projections.
+
+
+Key Characteristics:
+
+- **Flexibility:** Captures complex, non-linear patterns in data that linear models cannot represent [3] [2]
+
+- **Model Types:** Includes polynomial regression, logarithmic regression, exponential regression, and other transformations.  
+
+- **Estimation:** Parameters are typically estimated using iterative methods such as nonlinear least squares.  
+
+- **Evaluation:** Model performance is assessed with metrics such as $(R^2)$, adjusted $(R^2)$, and residual diagnostics. Special care must be taken to avoid overfitting[4].
+
+
+Applications:
+
+Non-linear regression is widely used in:  
+
+- Marketing: modeling diminishing returns of advertising spend. 
+
+- Healthcare: dose-response curves in clinical studies.  
+
+- Operations: learning curves and process optimization.  
+
+- Finance: modeling compound growth or interest effects[2] [3] [4].
+
+
+### Example: Simulated Dataset 
+
+```{r echo=TRUE, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(plotly)
+
+set.seed(123)
+
+# Simulate data
+n <- 100
+X <- runif(n, 1, 20)
+Y_poly <- 5 + 2*X - 0.1*X^2 + rnorm(n, 0, 2)
+Y_log <- 5 + 3*log(X) + rnorm(n, 0, 1)
+Y_exp <- 2*exp(0.1*X) + rnorm(n, 0, 2)
+Y_exp <- ifelse(Y_exp <= 0, 0.1, Y_exp)  # ensure positive
+
+data <- data.frame(X, Y_poly, Y_log, Y_exp)
+
+# Fit models
+model_poly <- lm(Y_poly ~ poly(X, 2, raw=TRUE), data=data)
+model_log <- lm(Y_log ~ log(X), data=data)
+model_exp <- lm(log(Y_exp) ~ X, data=data)  # Exponential as log-transform
+
+# Add predicted values
+data <- data %>%
+  mutate(
+    Y_poly_pred = predict(model_poly, newdata = data),
+    Y_log_pred = predict(model_log, newdata = data),
+    Y_exp_pred = exp(predict(model_exp, newdata = data))
+  )
+
+# Static-looking ggplot
+p <- ggplot(data, aes(x = X)) +
+  geom_point(aes(y = Y_poly, text = paste0("Y_poly: ", round(Y_poly,2))), color = "blue") +
+  geom_line(aes(y = Y_poly_pred), color = "blue", linewidth = 1) +
+  geom_point(aes(y = Y_log, text = paste0("Y_log: ", round(Y_log,2))), color = "green") +
+  geom_line(aes(y = Y_log_pred), color = "green", linewidth = 1) +
+  geom_point(aes(y = Y_exp, text = paste0("Y_exp: ", round(Y_exp,2))), color = "red") +
+  geom_line(aes(y = Y_exp_pred), color = "red", linewidth = 1) +
+  labs(title = "Non-Linear Regression Models",
+       x = "Predictor X",
+       y = "Response Variable") +
+  theme_minimal()
+
+# Convert to interactive plotly, only hover on points
+ggplotly(p, tooltip = "text")
+```
+
+The interactive plot illustrates the behavior of three non-linear regression models polynomial (blue), logarithmic (green), and exponential (red) on simulated data. Each point represents an observed value, while the corresponding line shows the predicted values from the fitted models.  
+
+From the visualization, it is evident that the polynomial model captures the curved trend of $(Y_{poly})$, the logarithmic model effectively models the diminishing increase of $(Y_{log})$ with $(X)$, and the exponential model represents the rapid growth pattern of $(Y_{exp})$. The hover functionality allows examination of individual observations, highlighting the deviations from predicted values, which reflect the residuals.  
+
+Overall, the plot demonstrates how different non-linear models can accommodate various data patterns, emphasizing the importance of choosing an appropriate model to match the underlying relationship.
+
+---
+
+### Generalized Regeression Models
+
+Generalized regression models, such as logistic regression for binary or multinomial outcomes and Poisson regression for count data, extend the regression framework to accommodate categorical or non-Gaussian response variables [4].
+
+These models are universally applied in research, industry, and policy-making to interpret historical data, forecast outcomes, and inform strategic decisions, bridging theoretical understanding with practical utility [2]. A GLM is defined by three main components:
+
+#### Random Component 
+
+Specifies the probability distribution of the response variable $(Y)$. Common choices include:
+   - Normal — for continuous data  
+   
+   - Binomial — for binary outcomes  
+   
+   - Poisson — for count data  
+   
+   - Gamma — for positive and skewed continuous data  
+
+#### Systematic Component
+
+Represents the linear combination of predictors:  
+   
+   $$\eta = \beta_0 + \beta_1X_1 + \beta_2X_2 + \dots + \beta_nX_n$$
+   
+   where $( \eta )$ is called the linear predictor.
+
+#### Link Function
+   
+Connects the expected value of the response \( \mu = E(Y) \) to the linear predictor \( \eta \):  
+   
+   $$g(\mu) = \eta$$
+   
+The link function determines the relationship between the mean of the response variable and the predictors. Examples include:
+
+   - **Identity link:** $( g(\mu) = \mu )$ → Linear Regression  
+   - **Logit link:** $( g(\mu) = \log\left(\frac{\mu}{1-\mu}\right) )$ → Logistic Regression  
+   - **Log link:** $( g(\mu) = \log(\mu) )$ → Poisson Regression  
+
+
+#### General Formula
+
+$$g(E[Y|X]) = \beta_0 + \beta_1X_1 + \beta_2X_2 + \dots + \beta_nX_n$$
+
+This structure ensures that GLMs remain linear in parameters while allowing flexibility in modeling various types of response variables.
+
+
+
+Common Types of GLMs
+
+| Model Type | Response Distribution | Link Function | Typical Use Case |
+|-------------|----------------------|----------------|------------------|
+| Linear Regression | Normal | Identity | Continuous outcome |
+| Logistic Regression | Binomial | Logit | Binary classification |
+| Poisson Regression | Poisson | Log | Count data |
+| Gamma Regression | Gamma | Inverse | Positive, skewed data (e.g., time or cost) |
+
+
+
+### Example: Logistic Regression Model
+
+The following example demonstrates a logistic regression, a common type of GLM used when the response variable is binary (0/1).  
+We will simulate a dataset and visualize the fitted probability curve interactively.
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(dplyr)
+library(plotly)
+
+set.seed(123)
+
+# Simulate binary classification data
+n <- 150
+X <- runif(n, 1, 10)
+# True relationship: probability increases sigmoidally with X
+p <- 1 / (1 + exp(-( -4 + 0.8 * X )))
+Y <- rbinom(n, 1, p)
+
+data <- data.frame(X, Y)
+
+# Fit logistic regression (GLM with logit link)
+model_logit <- glm(Y ~ X, family = binomial(link = "logit"), data = data)
+
+# Add predicted probabilities
+data <- data %>%
+  mutate(prob_pred = predict(model_logit, newdata = data, type = "response"))
+
+# Create interactive visualization
+p <- ggplot(data, aes(x = X, y = Y)) +
+  geom_point(aes(text = paste("Observed:", Y)), color = "darkblue", size = 2, alpha = 0.6) +
+  geom_line(aes(y = prob_pred), color = "red", linewidth = 1) +
+  labs(title = "Generalized Linear Model: Logistic Regression",
+       subtitle = "Fitted Probability Curve with Logit Link Function",
+       x = "Predictor X",
+       y = "Predicted Probability") +
+  theme_minimal()
+
+# Make plot interactive
+ggplotly(p, tooltip = "text")
+```
+
+
+The visualization presents the behavior of a logistic regression model, a type of Generalized Linear Model (GLM). The blue points depict the observed binary outcomes, while the red curve represents the model’s predicted probabilities. As the predictor variable increases, the probability of success (Y = 1) also rises, forming an S-shaped curve that reflects the nonlinear transformation of the logit link function. This pattern indicates that the logistic regression model effectively captures the gradual change in event likelihood while maintaining linearity in its coefficients.
+
+
+## References 
+
+[1] https://bookdown.org/content/a142b172-69b2-436d-bdb0-9da6d046a0f9/02-Regression_Model.html
+
+[2] Han, J., Pei, J., & Tong, H. (2022). Data Mining: Concepts and Techniques (4th ed.). Morgan Kaufmann.
+
+[3] James, G., Witten, D., Hastie, T., & Tibshirani, R. (2021). An Introduction to Statistical Learning: With Applications in R (2nd ed.). Springer.
+
+[4] Kuhn, M., & Silge, J. (2022). Tidy Modeling with R. O'Reilly Media.
