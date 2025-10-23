@@ -20,10 +20,8 @@
   
   
 
-<meta name="author" content="Siti Azkya Nurhalima" />
 
 
-<meta name="date" content="2025-10-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +29,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="a-caucus-race-and-a-long-tale.html"/>
+<link rel="next" href="classification-models.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,30 +50,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<!-- Floating TOC di kanan atas -->
-<div id="floating-toc" class="floating-toc"></div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const headers = document.querySelectorAll(".page-inner h2, .page-inner h3");
-  if (headers.length === 0) return;
-
-  const toc = document.getElementById("floating-toc");
-  const list = document.createElement("ul");
-
-  headers.forEach(h => {
-    const id = h.id || h.textContent.trim().replace(/\s+/g, "-").toLowerCase();
-    h.id = id;
-
-    const li = document.createElement("li");
-    li.className = h.tagName.toLowerCase() === "h3" ? "sub" : "";
-    li.innerHTML = `<a href="#${id}">${h.textContent}</a>`;
-    list.appendChild(li);
-  });
-
-  toc.appendChild(list);
-});
-</script>
 
 
 
@@ -98,24 +72,48 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <ul class="summary">
 <div class="sidebar-header">
-  <img src="images/logo.png" class="sidebar-logo">
+  <img src="images/azky.jpg" class="sidebar-logo">
   <h2 class="sidebar-title">Analysis and Predictive Modelling</h2>
-  <div class="sidebar-icons">
-    <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
-    <a href="#" title="Share"><i class="fa fa-share-alt"></i></a>
-    <a href="#" title="External Link"><i class="fa fa-link"></i></a>
-    <a href="https://github.com/" title="GitHub"><i class="fa fa-github"></i></a>
+  <div class="book-toolbar">
+    <div class="book-search">
+      <input type="text" placeholder="Search...">
+    </div>
+    <div class="icon-links">
+      <a href="https://github.com/" title="GitHub"><i class="fa fa-github"></i></a>
+      <a href="https://linkedin.com/" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+      <a href="#" title="Share"><i class="fa fa-share-alt"></i></a>
+      <a href="book.pdf" title="Download PDF"><i class="fa fa-file-pdf-o"></i></a>
+    </div>
   </div>
 </div>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Predictive Analysis</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#predictive-analysis"><i class="fa fa-check"></i><b>1.1</b> Predictive Analysis</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#definition-of-predictive-analysis"><i class="fa fa-check"></i><b>1.1.1</b> Definition of Predictive Analysis</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#types-techniques-and-data-in-predictive-analytics"><i class="fa fa-check"></i><b>1.1.2</b> Types, Techniques, and Data in Predictive Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#predictive-analysis-concepts"><i class="fa fa-check"></i><b>1.2</b> Predictive Analysis Concepts</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#why-use-predictive-analysis"><i class="fa fa-check"></i><b>1.2.1</b> Why Use Predictive Analysis?</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#when-and-where-to-applied-predictive-analysis"><i class="fa fa-check"></i><b>1.2.2</b> When and Where to Applied Predictive Analysis?</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#who-involved-in-predictive-analysis"><i class="fa fa-check"></i><b>1.2.3</b> Who Involved in Predictive Analysis</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#how-to-implement-predictive-analysis"><i class="fa fa-check"></i><b>1.2.4</b> How to Implement Predictive Analysis?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#references"><i class="fa fa-check"></i><b>1.3</b> References</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="regression-models.html"><a href="regression-models.html"><i class="fa fa-check"></i><b>2</b> Regression Models</a></li>
-<li class="chapter" data-level="3" data-path="a-caucus-race-and-a-long-tale.html"><a href="a-caucus-race-and-a-long-tale.html"><i class="fa fa-check"></i><b>3</b> A caucus-race and a long tale</a></li>
+<li class="chapter" data-level="3" data-path="classification-models.html"><a href="classification-models.html"><i class="fa fa-check"></i><b>3</b> Classification Models</a></li>
 <li class="divider"></li>
 <div class="sidebar-footer">
-  <p><a href="#">Edit this page</a></p>
-  <p><a href="#">Report an issue</a></p>
+ <p><strong>Institut Teknologi Sains Bandung</strong><br>
+  <span>Data Science Program</span></p>
+  <p class="sidebar-author">
+    <strong>Author:</strong> Siti Azkya Nurhalima<br>
+    <strong>Date:</strong> 25-10-23
+  </p>
 </div>
 
 </ul>
@@ -145,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-caucus-race-and-a-long-tale.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="classification-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -193,7 +191,12 @@ gitbook.start({
     "options": null
   },
   "toc": {
-    "collapse": "subsection"
+    "collapse": "none",
+    "float": false,
+    "before_body": "<img src="images/azky.jpg" alt="Logo" width="100">n"
+  },
+  "toolbar": {
+    "position": "none"
   }
 });
 });

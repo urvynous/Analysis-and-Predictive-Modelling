@@ -59,30 +59,6 @@
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
 <script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
-<!-- Floating TOC di kanan atas -->
-<div id="floating-toc" class="floating-toc"></div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const headers = document.querySelectorAll(".page-inner h2, .page-inner h3");
-  if (headers.length === 0) return;
-
-  const toc = document.getElementById("floating-toc");
-  const list = document.createElement("ul");
-
-  headers.forEach(h => {
-    const id = h.id || h.textContent.trim().replace(/\s+/g, "-").toLowerCase();
-    h.id = id;
-
-    const li = document.createElement("li");
-    li.className = h.tagName.toLowerCase() === "h3" ? "sub" : "";
-    li.innerHTML = `<a href="#${id}">${h.textContent}</a>`;
-    list.appendChild(li);
-  });
-
-  toc.appendChild(list);
-});
-</script>
 
 
 <style type="text/css">
@@ -171,11 +147,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sidebar-header">
   <img src="images/azky.jpg" class="sidebar-logo">
   <h2 class="sidebar-title">Analysis and Predictive Modelling</h2>
-  <div class="sidebar-icons">
-    <a href="index.html" title="Home"><i class="fa fa-home"></i></a>
-    <a href="#" title="Share"><i class="fa fa-share-alt"></i></a>
-    <a href="#" title="External Link"><i class="fa fa-link"></i></a>
-    <a href="https://github.com/" title="GitHub"><i class="fa fa-github"></i></a>
+  <div class="book-toolbar">
+    <div class="book-search">
+      <input type="text" placeholder="Search...">
+    </div>
+    <div class="icon-links">
+      <a href="https://github.com/" title="GitHub"><i class="fa fa-github"></i></a>
+      <a href="https://linkedin.com/" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+      <a href="#" title="Share"><i class="fa fa-share-alt"></i></a>
+      <a href="book.pdf" title="Download PDF"><i class="fa fa-file-pdf-o"></i></a>
+    </div>
   </div>
 </div>
 
@@ -192,6 +173,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#why-use-predictive-analysis"><i class="fa fa-check"></i><b>1.2.1</b> Why Use Predictive Analysis?</a></li>
 <li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#when-and-where-to-applied-predictive-analysis"><i class="fa fa-check"></i><b>1.2.2</b> When and Where to Applied Predictive Analysis?</a></li>
 <li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#who-involved-in-predictive-analysis"><i class="fa fa-check"></i><b>1.2.3</b> Who Involved in Predictive Analysis</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#how-to-implement-predictive-analysis"><i class="fa fa-check"></i><b>1.2.4</b> How to Implement Predictive Analysis?</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#references"><i class="fa fa-check"></i><b>1.3</b> References</a></li>
 </ul></li>
@@ -339,8 +321,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-104"><a href="index.html#cb1-104" tabindex="-1"></a><span class="st">  H3 -&gt; H3a</span></span>
 <span id="cb1-105"><a href="index.html#cb1-105" tabindex="-1"></a><span class="st">}</span></span>
 <span id="cb1-106"><a href="index.html#cb1-106" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
-<div class="grViz html-widget html-fill-item" id="htmlwidget-3ff501de14d239c5cffb" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-3ff501de14d239c5cffb">{"x":{"diagram":"\ndigraph predictive_analytics {\n  graph [layout = dot, rankdir = LR, bgcolor=\"white\"]\n\n  node [shape=box, style=filled, fontname=Helvetica, fontsize=18, penwidth=1.5]\n\n  # ==== CENTRAL NODE ====\n  PA [label=\"PREDICTIVE ANALYTICS\", shape=ellipse, fillcolor=\"#F2F2F2\", fontsize=24, width=3.5, height=1.2]\n\n  # ==== MAIN CATEGORIES ====\n  What   [label=\"What?\",   fillcolor=\"#0B3D91\", fontcolor=\"white\"]\n  Why    [label=\"Why?\",    fillcolor=\"#8B004B\", fontcolor=\"white\"]\n  When   [label=\"When?\",   fillcolor=\"#A0522D\", fontcolor=\"white\"]\n  Where  [label=\"Where?\",  fillcolor=\"#4B0082\", fontcolor=\"white\"]\n  Who    [label=\"Who?\",    fillcolor=\"#7B241C\", fontcolor=\"white\"]\n  How    [label=\"How?\",    fillcolor=\"#145A32\", fontcolor=\"white\"]\n\n  # ==== SUBCATEGORIES ====\n  # --- WHAT ---\n  W1 [label=\"Definition & Types\", fillcolor=\"#5B8DD9\"]\n  W2 [label=\"Techniques\", fillcolor=\"#5B8DD9\"]\n  W3 [label=\"Data Types\", fillcolor=\"#5B8DD9\"]\n  W1a [label=\"Descriptive vs Predictive\", fillcolor=\"#B3C9F1\"]\n  W2a [label=\"Regression, Classification, Clustering, Time Series\", fillcolor=\"#B3C9F1\"]\n  W3a [label=\"Structured & Unstructured Data\", fillcolor=\"#B3C9F1\"]\n\n  # --- WHY ---\n  Y1 [label=\"Benefits & Business Impact\", fillcolor=\"#D96CA3\"]\n  Y2 [label=\"ROI\", fillcolor=\"#D96CA3\"]\n  Y1a [label=\"Decision Making\", fillcolor=\"#F4B9D0\"]\n  Y1b [label=\"Risk Reduction\", fillcolor=\"#F4B9D0\"]\n  Y2a [label=\"Cost Savings & Revenue Gain\", fillcolor=\"#F4B9D0\"]\n\n  # --- WHEN ---\n  We1 [label=\"When to Apply\", fillcolor=\"#C28840\"]\n  We1a [label=\"Planning, Operations, Marketing, Risk Assessment\", fillcolor=\"#E3B673\"]\n\n  # --- WHERE ---\n  Wh1 [label=\"Industries & Case Studies\", fillcolor=\"#8B66D9\"]\n  Wh1a [label=\"Finance, Banking, Healthcare, Supply Chain\", fillcolor=\"#C9AFE6\"]\n  Wh1b [label=\"Netflix Recommendations, Walmart Forecasting\", fillcolor=\"#C9AFE6\"]\n\n  # --- WHO ---\n  Wo1 [label=\"Roles\", fillcolor=\"#D96B6B\"]\n  Wo1a [label=\"Data Scientist\", fillcolor=\"#F4A6A6\"]\n  Wo1b [label=\"Business Analyst\", fillcolor=\"#F4A6A6\"]\n  Wo1c [label=\"Domain Expert\", fillcolor=\"#F4A6A6\"]\n\n  # --- HOW ---\n  H1 [label=\"Workflow\", fillcolor=\"#5FBF60\"]\n  H2 [label=\"Tools & Software\", fillcolor=\"#5FBF60\"]\n  H3 [label=\"Performance Evaluation\", fillcolor=\"#5FBF60\"]\n  H1a [label=\"Data Collection → Cleaning → Modeling → Evaluation → Deployment\", fillcolor=\"#A8E0A8\"]\n  H2a [label=\"Python, R, SQL, Power BI, Tableau\", fillcolor=\"#A8E0A8\"]\n  H3a [label=\"Metrics: Accuracy, Precision, Recall, RMSE, F1\", fillcolor=\"#A8E0A8\"]\n\n  # ==== CONNECTIONS ====\n  PA -> What\n  PA -> Why\n  PA -> When\n  PA -> Where\n  PA -> Who\n  PA -> How\n\n  # WHAT\n  What -> W1\n  What -> W2\n  What -> W3\n  W1 -> W1a\n  W2 -> W2a\n  W3 -> W3a\n\n  # WHY\n  Why -> Y1\n  Why -> Y2\n  Y1 -> Y1a\n  Y1 -> Y1b\n  Y2 -> Y2a\n\n  # WHEN\n  When -> We1\n  We1 -> We1a\n\n  # WHERE\n  Where -> Wh1\n  Wh1 -> Wh1a\n  Wh1 -> Wh1b\n\n  # WHO\n  Who -> Wo1\n  Wo1 -> Wo1a\n  Wo1 -> Wo1b\n  Wo1 -> Wo1c\n\n  # HOW\n  How -> H1\n  How -> H2\n  How -> H3\n  H1 -> H1a\n  H2 -> H2a\n  H3 -> H3a\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="grViz html-widget html-fill-item" id="htmlwidget-bc2a6b2e9127806b8757" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-bc2a6b2e9127806b8757">{"x":{"diagram":"\ndigraph predictive_analytics {\n  graph [layout = dot, rankdir = LR, bgcolor=\"white\"]\n\n  node [shape=box, style=filled, fontname=Helvetica, fontsize=18, penwidth=1.5]\n\n  # ==== CENTRAL NODE ====\n  PA [label=\"PREDICTIVE ANALYTICS\", shape=ellipse, fillcolor=\"#F2F2F2\", fontsize=24, width=3.5, height=1.2]\n\n  # ==== MAIN CATEGORIES ====\n  What   [label=\"What?\",   fillcolor=\"#0B3D91\", fontcolor=\"white\"]\n  Why    [label=\"Why?\",    fillcolor=\"#8B004B\", fontcolor=\"white\"]\n  When   [label=\"When?\",   fillcolor=\"#A0522D\", fontcolor=\"white\"]\n  Where  [label=\"Where?\",  fillcolor=\"#4B0082\", fontcolor=\"white\"]\n  Who    [label=\"Who?\",    fillcolor=\"#7B241C\", fontcolor=\"white\"]\n  How    [label=\"How?\",    fillcolor=\"#145A32\", fontcolor=\"white\"]\n\n  # ==== SUBCATEGORIES ====\n  # --- WHAT ---\n  W1 [label=\"Definition & Types\", fillcolor=\"#5B8DD9\"]\n  W2 [label=\"Techniques\", fillcolor=\"#5B8DD9\"]\n  W3 [label=\"Data Types\", fillcolor=\"#5B8DD9\"]\n  W1a [label=\"Descriptive vs Predictive\", fillcolor=\"#B3C9F1\"]\n  W2a [label=\"Regression, Classification, Clustering, Time Series\", fillcolor=\"#B3C9F1\"]\n  W3a [label=\"Structured & Unstructured Data\", fillcolor=\"#B3C9F1\"]\n\n  # --- WHY ---\n  Y1 [label=\"Benefits & Business Impact\", fillcolor=\"#D96CA3\"]\n  Y2 [label=\"ROI\", fillcolor=\"#D96CA3\"]\n  Y1a [label=\"Decision Making\", fillcolor=\"#F4B9D0\"]\n  Y1b [label=\"Risk Reduction\", fillcolor=\"#F4B9D0\"]\n  Y2a [label=\"Cost Savings & Revenue Gain\", fillcolor=\"#F4B9D0\"]\n\n  # --- WHEN ---\n  We1 [label=\"When to Apply\", fillcolor=\"#C28840\"]\n  We1a [label=\"Planning, Operations, Marketing, Risk Assessment\", fillcolor=\"#E3B673\"]\n\n  # --- WHERE ---\n  Wh1 [label=\"Industries & Case Studies\", fillcolor=\"#8B66D9\"]\n  Wh1a [label=\"Finance, Banking, Healthcare, Supply Chain\", fillcolor=\"#C9AFE6\"]\n  Wh1b [label=\"Netflix Recommendations, Walmart Forecasting\", fillcolor=\"#C9AFE6\"]\n\n  # --- WHO ---\n  Wo1 [label=\"Roles\", fillcolor=\"#D96B6B\"]\n  Wo1a [label=\"Data Scientist\", fillcolor=\"#F4A6A6\"]\n  Wo1b [label=\"Business Analyst\", fillcolor=\"#F4A6A6\"]\n  Wo1c [label=\"Domain Expert\", fillcolor=\"#F4A6A6\"]\n\n  # --- HOW ---\n  H1 [label=\"Workflow\", fillcolor=\"#5FBF60\"]\n  H2 [label=\"Tools & Software\", fillcolor=\"#5FBF60\"]\n  H3 [label=\"Performance Evaluation\", fillcolor=\"#5FBF60\"]\n  H1a [label=\"Data Collection → Cleaning → Modeling → Evaluation → Deployment\", fillcolor=\"#A8E0A8\"]\n  H2a [label=\"Python, R, SQL, Power BI, Tableau\", fillcolor=\"#A8E0A8\"]\n  H3a [label=\"Metrics: Accuracy, Precision, Recall, RMSE, F1\", fillcolor=\"#A8E0A8\"]\n\n  # ==== CONNECTIONS ====\n  PA -> What\n  PA -> Why\n  PA -> When\n  PA -> Where\n  PA -> Who\n  PA -> How\n\n  # WHAT\n  What -> W1\n  What -> W2\n  What -> W3\n  W1 -> W1a\n  W2 -> W2a\n  W3 -> W3a\n\n  # WHY\n  Why -> Y1\n  Why -> Y2\n  Y1 -> Y1a\n  Y1 -> Y1b\n  Y2 -> Y2a\n\n  # WHEN\n  When -> We1\n  We1 -> We1a\n\n  # WHERE\n  Where -> Wh1\n  Wh1 -> Wh1a\n  Wh1 -> Wh1b\n\n  # WHO\n  Who -> Wo1\n  Wo1 -> Wo1a\n  Wo1 -> Wo1b\n  Wo1 -> Wo1c\n\n  # HOW\n  How -> H1\n  How -> H2\n  How -> H3\n  H1 -> H1a\n  H2 -> H2a\n  H3 -> H3a\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <hr />
 <div id="predictive-analysis" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Predictive Analysis<a href="index.html#predictive-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -801,6 +783,116 @@ Consume predictions for operational or strategic purposes and provide feedback f
 </table>
 <hr />
 </div>
+<div id="how-to-implement-predictive-analysis" class="section level3 hasAnchor" number="1.2.4">
+<h3><span class="header-section-number">1.2.4</span> How to Implement Predictive Analysis?<a href="index.html#how-to-implement-predictive-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb6-2"><a href="index.html#cb6-2" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb6-3"><a href="index.html#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="index.html#cb6-4" tabindex="-1"></a><span class="co"># Structured Steps for Implementing Predictive Analytics</span></span>
+<span id="cb6-5"><a href="index.html#cb6-5" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="index.html#cb6-6" tabindex="-1"></a>how_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb6-7"><a href="index.html#cb6-7" tabindex="-1"></a><span class="at">Step =</span> <span class="fu">c</span>(</span>
+<span id="cb6-8"><a href="index.html#cb6-8" tabindex="-1"></a><span class="st">&quot;Define Objectives&quot;</span>,</span>
+<span id="cb6-9"><a href="index.html#cb6-9" tabindex="-1"></a><span class="st">&quot;Data Collection and Integration&quot;</span>,</span>
+<span id="cb6-10"><a href="index.html#cb6-10" tabindex="-1"></a><span class="st">&quot;Data Preprocessing&quot;</span>,</span>
+<span id="cb6-11"><a href="index.html#cb6-11" tabindex="-1"></a><span class="st">&quot;Model Selection and Training&quot;</span>,</span>
+<span id="cb6-12"><a href="index.html#cb6-12" tabindex="-1"></a><span class="st">&quot;Model Evaluation and Validation&quot;</span>,</span>
+<span id="cb6-13"><a href="index.html#cb6-13" tabindex="-1"></a><span class="st">&quot;Deployment&quot;</span>,</span>
+<span id="cb6-14"><a href="index.html#cb6-14" tabindex="-1"></a><span class="st">&quot;Monitoring and Maintenance&quot;</span></span>
+<span id="cb6-15"><a href="index.html#cb6-15" tabindex="-1"></a>),</span>
+<span id="cb6-16"><a href="index.html#cb6-16" tabindex="-1"></a><span class="at">Description =</span> <span class="fu">c</span>(</span>
+<span id="cb6-17"><a href="index.html#cb6-17" tabindex="-1"></a><span class="st">&quot;Specify the business problem, expected outcomes, and success metrics clearly.&quot;</span>,</span>
+<span id="cb6-18"><a href="index.html#cb6-18" tabindex="-1"></a><span class="st">&quot;Gather relevant historical and real-time data from multiple sources and integrate datasets.&quot;</span>,</span>
+<span id="cb6-19"><a href="index.html#cb6-19" tabindex="-1"></a><span class="st">&quot;Handle missing values, outliers, and perform feature engineering to enhance model quality.&quot;</span>,</span>
+<span id="cb6-20"><a href="index.html#cb6-20" tabindex="-1"></a><span class="st">&quot;Select suitable predictive algorithms and train models using historical data.&quot;</span>,</span>
+<span id="cb6-21"><a href="index.html#cb6-21" tabindex="-1"></a><span class="st">&quot;Assess model performance using appropriate metrics and validate via cross-validation or holdout sets.&quot;</span>,</span>
+<span id="cb6-22"><a href="index.html#cb6-22" tabindex="-1"></a><span class="st">&quot;Integrate predictive models into operational systems or dashboards for actionable insights.&quot;</span>,</span>
+<span id="cb6-23"><a href="index.html#cb6-23" tabindex="-1"></a><span class="st">&quot;Continuously track model performance, recalibrate models as necessary, and update datasets to maintain accuracy.&quot;</span></span>
+<span id="cb6-24"><a href="index.html#cb6-24" tabindex="-1"></a>)</span>
+<span id="cb6-25"><a href="index.html#cb6-25" tabindex="-1"></a>)</span>
+<span id="cb6-26"><a href="index.html#cb6-26" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="index.html#cb6-27" tabindex="-1"></a>how_data <span class="sc">%&gt;%</span></span>
+<span id="cb6-28"><a href="index.html#cb6-28" tabindex="-1"></a><span class="fu">kable</span>(<span class="st">&quot;html&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Structured Steps for Implementing Predictive Analytics&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-29"><a href="index.html#cb6-29" tabindex="-1"></a><span class="fu">kable_styling</span>(</span>
+<span id="cb6-30"><a href="index.html#cb6-30" tabindex="-1"></a><span class="at">full_width =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb6-31"><a href="index.html#cb6-31" tabindex="-1"></a><span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>)</span>
+<span id="cb6-32"><a href="index.html#cb6-32" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-33"><a href="index.html#cb6-33" tabindex="-1"></a><span class="fu">row_spec</span>(<span class="dv">0</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">background =</span> <span class="st">&quot;#D3D3D3&quot;</span>)</span></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:unnamed-chunk-4">Table 1.3: </span>Structured Steps for Implementing Predictive Analytics
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;background-color: rgba(211, 211, 211, 255) !important;">
+Step
+</th>
+<th style="text-align:left;font-weight: bold;background-color: rgba(211, 211, 211, 255) !important;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Define Objectives
+</td>
+<td style="text-align:left;">
+Specify the business problem, expected outcomes, and success metrics clearly.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Data Collection and Integration
+</td>
+<td style="text-align:left;">
+Gather relevant historical and real-time data from multiple sources and integrate datasets.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Data Preprocessing
+</td>
+<td style="text-align:left;">
+Handle missing values, outliers, and perform feature engineering to enhance model quality.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Model Selection and Training
+</td>
+<td style="text-align:left;">
+Select suitable predictive algorithms and train models using historical data.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Model Evaluation and Validation
+</td>
+<td style="text-align:left;">
+Assess model performance using appropriate metrics and validate via cross-validation or holdout sets.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Deployment
+</td>
+<td style="text-align:left;">
+Integrate predictive models into operational systems or dashboards for actionable insights.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Monitoring and Maintenance
+</td>
+<td style="text-align:left;">
+Continuously track model performance, recalibrate models as necessary, and update datasets to maintain accuracy.
+</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
 </div>
 <div id="references" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> References<a href="index.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -865,7 +957,9 @@ gitbook.start({
     "options": null
   },
   "toc": {
-    "collapse": "subsection"
+    "collapse": "none",
+    "float": false,
+    "before_body": "<img src="images/azky.jpg" alt="Logo" width="100">n"
   },
   "toolbar": {
     "position": "none"

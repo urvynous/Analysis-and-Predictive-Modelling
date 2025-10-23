@@ -23,3 +23,5 @@ when-is-predictive-analytics-applied
 where-is-predictive-analytics-applied
 tab:unnamed-chunk-3
 who-involved-in-predictive-analysis
+tab:unnamed-chunk-4
+how-to-implement-predictive-analysis

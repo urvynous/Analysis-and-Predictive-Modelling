@@ -5,6 +5,10 @@ output:
   bookdown::gitbook:
     css: "style.css"
     split_by: chapter
+    config:
+      toc:
+        before_body: |
+          <img src="images/azky.jpg" alt="Logo" width="100">
   bookdown::pdf_book:
     toc: true
     toc_depth: 2
@@ -14,6 +18,7 @@ geometry: a4paper
 linestretch: 1.5
 lang: "en"
 ---
+
 
 # Introduction
 
