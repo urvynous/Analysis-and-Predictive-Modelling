@@ -1,4 +1,5 @@
 book_filename: "Analysis-and-Predictive-Modelling"
+delete_merged_file: true
 output_dir: "docs"
 edit: https://github.com/urvynous/Analysis-and-Predictive-Modelling/edit/main/%s
 view: https://github.com/urvynous/Analysis-and-Predictive-Modelling/blob/main/%s
