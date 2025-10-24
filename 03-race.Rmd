@@ -1,2 +1,134 @@
-# Case Study I: Comparing Results with Model
+# Case Study I: Comparing 2 Types Logistics Regression
 
+## Multinomial Logistic
+
+### Definition of Multinomial Logistic
+
+Multinomial Logistic Regression is a statistical modeling technique used when the dependent variable is categorical with more than two possible outcomes. Unlike binary logistic regression, which predicts the probability of one class versus another, the multinomial version generalizes the model to handle multiple categories simultaneously. This model is commonly applied in fields such as marketing (e.g., predicting consumer choice among several brands), education (e.g., predicting academic tracks), and healthcare (e.g., predicting disease types).
+
+Mathematically, the model estimates the probability that an observation belongs to a particular category $( k )$ out of $( K )$ possible categories. One category is typically chosen as the reference class, and the model computes the log-odds of each other category relative to this baseline.
+
+For $( K )$ possible outcomes and predictors $( X = (x_1, x_2, \dots, x_p) )$:
+
+$$P(Y = k | X) = \frac{\exp(\beta_{k0} + \beta_{k1}x_1 + \beta_{k2}x_2 + \dots + \beta_{kp}x_p)}{1 + \sum_{j=1}^{K-1} \exp(\beta_{j0} + \beta_{j1}x_1 + \dots + \beta_{jp}x_p)}
+$$
+for $( k = 1, 2, \dots, K-1 )$ and the baseline category $( K )$ is given by:
+
+$$P(Y = K | X) = \frac{1}{1 + \sum_{j=1}^{K-1} \exp(\beta_{j0} + \beta_{j1}x_1 + \dots + \beta_{jp}x_p)}$$
+
+**where:**
+
+- $( P(Y = k | X) )$: probability of class $( k )$ given predictors $( X )$  
+
+- $( \beta_{kj} )$: regression coefficients for class $( k )$ and predictor $( j )$  
+
+- The coefficients are estimated using maximum likelihood estimation (MLE).
+
+
+
+**Interpretation**
+
+The exponential of the estimated coefficient, $( e^{\beta_{kj}} )$, represents the odds ratio of being in category $( k )$ compared to the reference class for a one-unit increase in predictor $( x_j )$.
+
+---
+
+## Case Study
+
+### Data Preparation
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+
+data <- read.csv("data/Dataset1.csv")
+
+# Compute a linear score as a weighted combination of independent vaariables
+data$score <- with(data,
+                   0.5 * Advertising +
+                   0.3 * Salespeople +
+                   0.7 * Satisfaction -
+                   0.6 * Competition)
+
+# Normalize score to ensure a proper distribution
+data$score_norm <- (data$score - min(data$score)) / (max(data$score) - min(data$score))
+
+# Create a new variable with three categories
+data$Success_Level <- cut(data$score_norm,
+                          breaks = c(-Inf, 0.33, 0.66, Inf),
+                          labels = c("Low", "Medium", "High"))
+
+# Remove the previous 'success' column if it exists
+data$Success <- NULL
+
+library(DT)
+datatable(data, 
+          options = list(pageLength = 10, 
+                         autoWidth = TRUE,
+                         scrollX = TRUE))
+```
+
+
+#### Importing the dataset
+
+The dataset was imported into R using the read.csv() function. It consists of 200 observations and four numerical predictors Advertising, Salespeople, Satisfaction, and Competition which collectively represent key business performance indicators. At this stage, the data structure was verified to ensure all variables were correctly loaded and ready for subsequent modeling procedures.
+
+#### Data Transformation and Encoding the Dependent Variable
+
+To construct a suitable categorical response variable for multinomial logistic regression, a composite performance score was generated as a weighted linear combination of the four predictors. The formula is expressed as:
+
+$$
+\text{Score} = 0.5(\text{Advertising}) + 0.3(\text{Salespeople}) + 0.7(\text{Satisfaction}) - 0.6(\text{Competition})
+$$
+This linear combination captures the joint influence of marketing, sales, customer satisfaction, and competition intensity on overall business success. Positive coefficients for Advertising, Salespeople, and Satisfaction indicate that higher values in these predictors increase the likelihood of better performance, while the negative coefficient for Competition implies an inverse relationship with success. To enhance comparability among variables measured on vastly different scales (ranging approximately from 10¹³ to 10¹⁶), the composite score was normalized into the [0, 1] range using the min–max normalization formula:
+
+$$
+\text{Score}_{norm} = \frac{\text{Score} - \min(\text{Score})}{\max(\text{Score}) - \min(\text{Score})}
+$$
+
+The normalized scores were then discretized into three ordered categories using fixed breakpoints at 0.33 and 0.66, representing Low, Medium, and High success levels, respectively. This categorization generated the new dependent variable Success_Level, which serves as the outcome variable for the subsequent predictive modeling process. 
+
+#### Interpretation of the Transformation Results
+
+Each observation is now assigned a Success_Level category corresponding to its normalized score interval. The classification logic follows a clear monotonic rule:
+
+| Normalized Score Range | Category | Expected Business Profile                          |
+|-------------------------|-----------|----------------------------------------------------|
+| 0.00 – 0.33             | Low       | Low Advertising & Satisfaction, High Competition   |
+| 0.34 – 0.66             | Medium    | Moderate levels across predictors                  |
+| 0.67 – 1.00             | High      | High Advertising & Satisfaction, Low Competition   |
+
+
+For instance:
+
+- Observation 4 (score_norm = 0.7596) is categorized as High, reflecting strong advertising and satisfaction with moderate competition.
+
+- Observation 6 (score_norm = 0.3039) falls under Low, showing weak satisfaction and intense competition.
+
+- Observations such as 2 and 3 (score_norm ≈ 0.65) are Medium, representing balanced business attributes.
+
+This pattern confirms that the classification is theoretically and empirically coherent — observations with higher marketing and satisfaction levels (and lower competition) are consistently mapped to higher success categories.
+
+#### Validation of Consistency Across the Dataset
+
+The encoding structure applied through the cut() function in R ensures deterministic classification across all 200 observations. Since the defined cutpoints (0.33 and 0.66) partition the normalized range [0, 1] evenly, the categorization remains consistent across the entire dataset.
+
+Therefore, the interpretation:
+
+- Low = weak performance under high competition,
+
+- Medium = balanced marketing and satisfaction, and
+
+- High = strong marketing and satisfaction with reduced competition —
+is mathematically consistent with the normalization logic and semantically valid within the business context.
+
+This validation confirms that the encoded variable Success_Level accurately reflects varying degrees of business performance and is statistically ready for multiclass predictive modeling using multinomial logistic regression.
+
+
+**Creating Multinomial logistic regression**
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(nnet)
+
+model_multinom <- multinom(Success_Level ~ Advertising + Salespeople + Satisfaction + Competition,
+                           data = data)
+
+summary(model_multinom)
+```

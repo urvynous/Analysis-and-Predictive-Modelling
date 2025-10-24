@@ -45,3 +45,13 @@ general-formula
 example-logistic-regression-model
 references-1
 case-study-i-comparing-results-with-model
+case-study-i-comparing-2-types-logistics-regression
+binary-logistic
+multinomial-logistic
+definition-of-multinomial-logistic
+case-study
+data-preparation
+importing-the-dataset
+data-transformation-and-encoding-the-dependent-variable
+interpretation-of-the-transformation-results
+validation-of-consistency-across-the-dataset
