@@ -114,7 +114,7 @@ Therefore, the interpretation:
 
 - Low = weak performance under high competition,
 
-- Medium = balanced marketing and satisfaction, and
+- Medium = balanced marketing and satisfaction,
 
 - High = strong marketing and satisfaction with reduced competition —
 is mathematically consistent with the normalization logic and semantically valid within the business context.
