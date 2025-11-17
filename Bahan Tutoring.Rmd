@@ -1,0 +1,5 @@
+# Pengenalan Syntax di R studio
+
+## Data Preparation
+
+Import Dataset

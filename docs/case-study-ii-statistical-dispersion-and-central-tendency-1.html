@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Case Study II: Statistical Dispersion and Central Tendency | Analysis and Predictive Modelling</title>
+  <meta name="description" content="3 Case Study II: Statistical Dispersion and Central Tendency | Analysis and Predictive Modelling" />
+  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Case Study II: Statistical Dispersion and Central Tendency | Analysis and Predictive Modelling" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Case Study II: Statistical Dispersion and Central Tendency | Analysis and Predictive Modelling" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="case-study-ii-statistical-dispersion-and-central-tendency.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.34.0/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<div class="sidebar-header">
+  <img src="images/azky.jpg" class="sidebar-logo">
+  <h2 class="sidebar-title">Analysis and Predictive Modelling</h2>
+  <div class="book-toolbar">
+    <div class="book-search">
+      <input type="text" placeholder="Search...">
+    </div>
+    <div class="icon-links">
+      <a href="https://github.com/" title="GitHub"><i class="fa fa-github"></i></a>
+      <a href="https://linkedin.com/" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+      <a href="#" title="Share"><i class="fa fa-share-alt"></i></a>
+      <a href="book.pdf" title="Download PDF"><i class="fa fa-file-pdf-o"></i></a>
+    </div>
+  </div>
+</div>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#predictive-analysis"><i class="fa fa-check"></i><b>1.1</b> Predictive Analysis</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#definition-of-predictive-analysis"><i class="fa fa-check"></i><b>1.1.1</b> Definition of Predictive Analysis</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#types-techniques-and-data-in-predictive-analytics"><i class="fa fa-check"></i><b>1.1.2</b> Types, Techniques, and Data in Predictive Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#predictive-analysis-concepts"><i class="fa fa-check"></i><b>1.2</b> Predictive Analysis Concepts</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#why-use-predictive-analysis"><i class="fa fa-check"></i><b>1.2.1</b> Why Use Predictive Analysis?</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#when-and-where-to-applied-predictive-analysis"><i class="fa fa-check"></i><b>1.2.2</b> When and Where to Applied Predictive Analysis?</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#who-involved-in-predictive-analysis"><i class="fa fa-check"></i><b>1.2.3</b> Who Involved in Predictive Analysis</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#how-to-implement-predictive-analysis"><i class="fa fa-check"></i><b>1.2.4</b> How to Implement Predictive Analysis?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#references"><i class="fa fa-check"></i><b>1.3</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html"><i class="fa fa-check"></i><b>2</b> Case Study II: Statistical Dispersion and Central Tendency</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#definition-of-central-tendency"><i class="fa fa-check"></i><b>2.1</b> 1. Definition of Central Tendency</a></li>
+<li class="chapter" data-level="2.2" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#definition-of-statistical-dispersion"><i class="fa fa-check"></i><b>2.2</b> 2. Definition of Statistical Dispersion</a></li>
+<li class="chapter" data-level="2.3" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#dataset-overview"><i class="fa fa-check"></i><b>2.3</b> 3. Dataset Overview</a></li>
+<li class="chapter" data-level="2.4" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#data-preparation"><i class="fa fa-check"></i><b>2.4</b> data preparation</a></li>
+<li class="chapter" data-level="2.5" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#data-exploration"><i class="fa fa-check"></i><b>2.5</b> Data Exploration</a></li>
+<li class="chapter" data-level="2.6" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#central-tendency-analysis"><i class="fa fa-check"></i><b>2.6</b> Central Tendency Analysis</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#manual-calculation-example-drug-a-5-samples"><i class="fa fa-check"></i><b>2.6.1</b> Manual Calculation Example (Drug A – 5 Samples)</a></li>
+<li class="chapter" data-level="2.6.2" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#r-code-for-mean-median-and-mode-all-drugs"><i class="fa fa-check"></i><b>2.6.2</b> R Code for Mean, Median, and Mode (All Drugs)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#measures-of-dispersion"><i class="fa fa-check"></i><b>2.7</b> Measures of Dispersion</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#manual-calculation-drug-a-same-5-samples"><i class="fa fa-check"></i><b>2.7.1</b> Manual Calculation (Drug A – Same 5 samples)</a></li>
+<li class="chapter" data-level="2.7.2" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#a-hitung-mean-rata-rata"><i class="fa fa-check"></i><b>2.7.2</b> (a) Hitung <strong>mean (rata-rata)</strong></a></li>
+<li class="chapter" data-level="2.7.3" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#b-hitung-deviasi-dari-mean-untuk-setiap-nilai"><i class="fa fa-check"></i><b>2.7.3</b> (b) Hitung <strong>deviasi dari mean</strong> untuk setiap nilai</a></li>
+<li class="chapter" data-level="2.7.4" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#c-hitung-kuadrat-deviasi"><i class="fa fa-check"></i><b>2.7.4</b> (c) Hitung <strong>kuadrat deviasi</strong></a></li>
+<li class="chapter" data-level="2.7.5" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#d-hitung-variance-s%C2%B2"><i class="fa fa-check"></i><b>2.7.5</b> (d) Hitung <strong>Variance (s²)</strong></a></li>
+<li class="chapter" data-level="2.7.6" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#e-hitung-standard-deviation-s"><i class="fa fa-check"></i><b>2.7.6</b> (e) Hitung <strong>Standard Deviation (s)</strong></a></li>
+<li class="chapter" data-level="2.7.7" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#f-hitung-range"><i class="fa fa-check"></i><b>2.7.7</b> (f) Hitung <strong>Range</strong></a></li>
+<li class="chapter" data-level="2.7.8" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#r-code-for-range-variance-and-sd-all-drugs"><i class="fa fa-check"></i><b>2.7.8</b> 7.2 R Code for Range, Variance, and SD (All Drugs)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#visualization-for-central-tendency-and-dispersion"><i class="fa fa-check"></i><b>2.8</b> Visualization for Central Tendency and Dispersion</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#boxplot-violin-plot"><i class="fa fa-check"></i><b>2.8.1</b> Boxplot + Violin Plot</a></li>
+<li class="chapter" data-level="2.8.2" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#histogram-density"><i class="fa fa-check"></i><b>2.8.2</b> 8.2 Histogram + Density</a></li>
+<li class="chapter" data-level="2.8.3" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#scatterplot-by-patient"><i class="fa fa-check"></i><b>2.8.3</b> 8.3 Scatterplot by Patient</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="case-study-ii-statistical-dispersion-and-central-tendency.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency.html#conclusion"><i class="fa fa-check"></i><b>2.9</b> 9. Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><i class="fa fa-check"></i><b>3</b> Case Study II: Statistical Dispersion and Central Tendency</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#definition-of-central-tendency-1"><i class="fa fa-check"></i><b>3.1</b> 1. Definition of Central Tendency</a></li>
+<li class="chapter" data-level="3.2" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#definition-of-statistical-dispersion-1"><i class="fa fa-check"></i><b>3.2</b> 2. Definition of Statistical Dispersion</a></li>
+<li class="chapter" data-level="3.3" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#dataset-overview-1"><i class="fa fa-check"></i><b>3.3</b> 3. Dataset Overview</a></li>
+<li class="chapter" data-level="3.4" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#data-preparation-1"><i class="fa fa-check"></i><b>3.4</b> data preparation</a></li>
+<li class="chapter" data-level="3.5" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#data-exploration-1"><i class="fa fa-check"></i><b>3.5</b> Data Exploration</a></li>
+<li class="chapter" data-level="3.6" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#central-tendency-analysis-1"><i class="fa fa-check"></i><b>3.6</b> Central Tendency Analysis</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#manual-calculation-example-drug-a-5-samples-1"><i class="fa fa-check"></i><b>3.6.1</b> Manual Calculation Example (Drug A – 5 Samples)</a></li>
+<li class="chapter" data-level="3.6.2" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#r-code-for-mean-median-and-mode-all-drugs-1"><i class="fa fa-check"></i><b>3.6.2</b> R Code for Mean, Median, and Mode (All Drugs)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#measures-of-dispersion-1"><i class="fa fa-check"></i><b>3.7</b> Measures of Dispersion</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#manual-calculation-drug-a-same-5-samples-1"><i class="fa fa-check"></i><b>3.7.1</b> Manual Calculation (Drug A – Same 5 samples)</a></li>
+<li class="chapter" data-level="3.7.2" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#a-hitung-mean-rata-rata-1"><i class="fa fa-check"></i><b>3.7.2</b> (a) Hitung <strong>mean (rata-rata)</strong></a></li>
+<li class="chapter" data-level="3.7.3" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#b-hitung-deviasi-dari-mean-untuk-setiap-nilai-1"><i class="fa fa-check"></i><b>3.7.3</b> (b) Hitung <strong>deviasi dari mean</strong> untuk setiap nilai</a></li>
+<li class="chapter" data-level="3.7.4" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#c-hitung-kuadrat-deviasi-1"><i class="fa fa-check"></i><b>3.7.4</b> (c) Hitung <strong>kuadrat deviasi</strong></a></li>
+<li class="chapter" data-level="3.7.5" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#d-hitung-variance-s%C2%B2-1"><i class="fa fa-check"></i><b>3.7.5</b> (d) Hitung <strong>Variance (s²)</strong></a></li>
+<li class="chapter" data-level="3.7.6" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#e-hitung-standard-deviation-s-1"><i class="fa fa-check"></i><b>3.7.6</b> (e) Hitung <strong>Standard Deviation (s)</strong></a></li>
+<li class="chapter" data-level="3.7.7" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#f-hitung-range-1"><i class="fa fa-check"></i><b>3.7.7</b> (f) Hitung <strong>Range</strong></a></li>
+<li class="chapter" data-level="3.7.8" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#r-code-for-range-variance-and-sd-all-drugs-1"><i class="fa fa-check"></i><b>3.7.8</b> 7.2 R Code for Range, Variance, and SD (All Drugs)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.8" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#visualization-for-central-tendency-and-dispersion-1"><i class="fa fa-check"></i><b>3.8</b> Visualization for Central Tendency and Dispersion</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#boxplot-violin-plot-1"><i class="fa fa-check"></i><b>3.8.1</b> Boxplot + Violin Plot</a></li>
+<li class="chapter" data-level="3.8.2" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#histogram-density-1"><i class="fa fa-check"></i><b>3.8.2</b> Histogram + Density</a></li>
+<li class="chapter" data-level="3.8.3" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#scatterplot-by-patient-1"><i class="fa fa-check"></i><b>3.8.3</b> Scatterplot by Patient</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="case-study-ii-statistical-dispersion-and-central-tendency-1.html"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#conclusion-1"><i class="fa fa-check"></i><b>3.9</b> Conclusion</a></li>
+</ul></li>
+<li class="divider"></li>
+<div class="sidebar-footer">
+ <p><strong>Institut Teknologi Sains Bandung</strong><br>
+  <span>Data Science Program</span></p>
+  <p class="sidebar-author">
+    <strong>Author:</strong> Siti Azkya Nurhalima<br>
+    <strong>Date:</strong> 25-10-23
+  </p>
+</div>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analysis and Predictive Modelling</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="case-study-ii-statistical-dispersion-and-central-tendency-1" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Case Study II: Statistical Dispersion and Central Tendency<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#case-study-ii-statistical-dispersion-and-central-tendency-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this study, we analyze the effectiveness and consistency of three antihypertensive drugs—<strong>Drug A</strong>, <strong>Drug B</strong>, and <strong>Drug C</strong>—in reducing patients’ systolic blood pressure (SBP).<br />
+The dataset contains <strong>300 observations</strong> (100 per drug).<br />
+The goal is to evaluate how each drug performs in terms of both <strong>central tendency (mean, median, mode)</strong> and <strong>dispersion (range, variance, standard deviation)</strong>.</p>
+<div id="definition-of-central-tendency-1" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> 1. Definition of Central Tendency<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#definition-of-central-tendency-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Central Tendency refers to the statistical measures that describe the “center” or typical value of a dataset.<br />
+It provides a single representative number that summarizes an entire distribution.</p>
+<p>The three most common measures are:</p>
+<ul>
+<li><p><strong>Mean (<span class="math inline">\(\bar{X}\)</span>)</strong> — arithmetic average, sensitive to outliers.<br />
+<span class="math display">\[
+\bar{X} = \frac{\sum_{i=1}^{n} X_i}{n}
+\]</span></p></li>
+<li><p><strong>Median (<span class="math inline">\(M\)</span>)</strong> — middle value after data are ordered; robust to outliers.</p></li>
+<li><p><strong>Mode (<span class="math inline">\(Mo\)</span>)</strong> — most frequent observation, suitable for categorical or discrete data.</p></li>
+</ul>
+</div>
+<div id="definition-of-statistical-dispersion-1" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> 2. Definition of Statistical Dispersion<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#definition-of-statistical-dispersion-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>While Central Tendency identifies the middle of the data, <strong>Statistical Dispersion</strong> measures <em>how spread out</em> the data are. Common measures include:</p>
+<ul>
+<li><p><strong>Range</strong>: <span class="math inline">\(( R = X_{max} - X_{min} )\)</span></p></li>
+<li><p><strong>Variance</strong>: <span class="math inline">\(( s^2 = \frac{\sum (X_i - \bar{X})^2}{n-1} )\)</span></p></li>
+<li><p><strong>Standard Deviation (SD)</strong>: <span class="math inline">\(( s = \sqrt{s^2} )\)</span></p></li>
+</ul>
+<p>Dispersion quantifies <em>consistency or variability</em>:<br />
+Low dispersion = consistent data; High dispersion = data vary widely (less reliable mean).</p>
+</div>
+<div id="dataset-overview-1" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> 3. Dataset Overview<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#dataset-overview-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This dataset records <strong>blood pressure reduction (BP_Reduction)</strong> for <strong>300 patients</strong>, divided evenly among three antihypertensive drugs:<br />
+<strong>Drug A</strong>, <strong>Drug B</strong>, and <strong>Drug C</strong>.</p>
+<p>Each drug group has approximately 100 patients.<br />
+The goal: to evaluate which drug provides the most <strong>consistent</strong> effect (low variability) even when all have the same average reduction (≈50 mmHg).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb1-3"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb1-4" tabindex="-1"></a>drug_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">Acer</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">Analysis-and-Predictive-Modelling</span><span class="sc">\\</span><span class="st">data</span><span class="sc">\\</span><span class="st">5 Statistical Dispersion – Introduction to Statistics.csv&quot;</span>)</span>
+<span id="cb1-5"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb1-6" tabindex="-1"></a><span class="fu">datatable</span>(<span class="fu">head</span>(drug_data, <span class="dv">10</span>))</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-bef14f89f0a7d1d01bd1" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-bef14f89f0a7d1d01bd1">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],[1,2,3,4,5,6,7,8,9,10],[1,2,3,4,5,6,7,8,9,10],["Drug A","Drug A","Drug A","Drug A","Drug A","Drug A","Drug A","Drug A","Drug A","Drug A"],[46.7455922240579,48.39708300940256,57.34151202756458,49.90051241394185,50.1944091326237,58.12329539123537,51.85255148676498,43.22266428378629,46.11370619735133,47.31966060631918]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>X<\/th>\n      <th>PatientID<\/th>\n      <th>Drug<\/th>\n      <th>BP_Reduction<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"X","targets":1},{"name":"PatientID","targets":2},{"name":"Drug","targets":3},{"name":"BP_Reduction","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="data-preparation-1" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> data preparation<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#data-preparation-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-1" tabindex="-1"></a><span class="co"># Import required libraries</span></span>
+<span id="cb2-2"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-3" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-4"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-4" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb2-5"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-5" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-6"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-6" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-7" tabindex="-1"></a><span class="co"># Read CSV file</span></span>
+<span id="cb2-8"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-8" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-9" tabindex="-1"></a>drug_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/5 Statistical Dispersion – Introduction to Statistics.csv&quot;</span>)</span>
+<span id="cb2-10"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-10" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-11" tabindex="-1"></a><span class="co"># Display first few rows</span></span>
+<span id="cb2-12"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-12" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-13" tabindex="-1"></a><span class="fu">datatable</span>(<span class="fu">head</span>(drug_data, <span class="dv">10</span>),</span>
+<span id="cb2-14"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-14" tabindex="-1"></a><span class="at">options =</span> <span class="fu">list</span>(<span class="at">pageLength =</span> <span class="dv">10</span>,</span>
+<span id="cb2-15"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-15" tabindex="-1"></a><span class="at">autoWidth =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-16"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb2-16" tabindex="-1"></a><span class="at">scrollX =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-d813a0fca0167019b447" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d813a0fca0167019b447">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10"],[1,2,3,4,5,6,7,8,9,10],[1,2,3,4,5,6,7,8,9,10],["Drug A","Drug A","Drug A","Drug A","Drug A","Drug A","Drug A","Drug A","Drug A","Drug A"],[46.7455922240579,48.39708300940256,57.34151202756458,49.90051241394185,50.1944091326237,58.12329539123537,51.85255148676498,43.22266428378629,46.11370619735133,47.31966060631918]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>X<\/th>\n      <th>PatientID<\/th>\n      <th>Drug<\/th>\n      <th>BP_Reduction<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"autoWidth":true,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,2,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"X","targets":1},{"name":"PatientID","targets":2},{"name":"Drug","targets":3},{"name":"BP_Reduction","targets":4}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="data-exploration-1" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Data Exploration<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#data-exploration-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s explore the dataset structure and identify variables.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb3-1" tabindex="-1"></a><span class="fu">str</span>(drug_data)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    300 obs. of  4 variables:
+##  $ X           : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ PatientID   : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ Drug        : chr  &quot;Drug A&quot; &quot;Drug A&quot; &quot;Drug A&quot; &quot;Drug A&quot; ...
+##  $ BP_Reduction: num  46.7 48.4 57.3 49.9 50.2 ...</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb5-1" tabindex="-1"></a><span class="fu">summary</span>(drug_data)</span></code></pre></div>
+<pre><code>##        X            PatientID          Drug            BP_Reduction   
+##  Min.   :  1.00   Min.   :  1.00   Length:300         Min.   : 21.67  
+##  1st Qu.: 75.75   1st Qu.: 75.75   Class :character   1st Qu.: 44.09  
+##  Median :150.50   Median :150.50   Mode  :character   Median : 48.44  
+##  Mean   :150.50   Mean   :150.50                      Mean   : 50.00  
+##  3rd Qu.:225.25   3rd Qu.:225.25                      3rd Qu.: 53.49  
+##  Max.   :300.00   Max.   :300.00                      Max.   :195.70</code></pre>
+<p>Interpretation:</p>
+<ul>
+<li><code>PatientID</code>: numeric (unique identifier for each participant)</li>
+<li><code>Drug</code>: categorical variable (Drug A, B, or C)</li>
+<li><code>BP_Reduction</code>: numeric variable showing how much blood pressure decreased (mmHg).</li>
+</ul>
+<p>We will focus on <strong>BP_Reduction</strong>, since it directly reflects the treatment effect.</p>
+<p>Rata-rata dan median (≈50) → menunjukkan pusat distribusi yang seimbang di sekitar target penurunan 50 mmHg.</p>
+<p>Nilai maksimum (195.70) jauh di atas Q3 → menunjukkan adanya outlier besar. Ini yang nanti akan memengaruhi dispersion (khususnya pada Drug C).</p>
+<p>Rentang total (Max – Min ≈ 174) → distribusi sangat lebar → variabilitas tinggi di antara pasien.</p>
+<p>Kesimpulan dari Data Exploration:</p>
+<p>Struktur data bersih dan lengkap, tanpa missing values.</p>
+<p>Variabel utama untuk analisis:</p>
+<ol style="list-style-type: decimal">
+<li><p>Drug → faktor pembeda (kategori)</p></li>
+<li><p>BP_Reduction → variabel numerik untuk menghitung central tendency &amp; dispersion</p></li>
+<li><p>Outlier terdeteksi pada BP_Reduction, yang nantinya akan:</p></li>
+</ol>
+<p>Menarik mean ke arah kanan (right-skewed distribution).</p>
+<p>Meningkatkan range, variance, dan standard deviation.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Analisis berikutnya akan fokus membandingkan ketiga obat berdasarkan:</li>
+</ol>
+<p>Rata-rata (kekuatan efek),</p>
+<p>Median (posisi tengah distribusi),</p>
+<p>Variansi &amp; SD (konsistensi respon pasien).</p>
+</div>
+<div id="central-tendency-analysis-1" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Central Tendency Analysis<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#central-tendency-analysis-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="manual-calculation-example-drug-a-5-samples-1" class="section level3 hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Manual Calculation Example (Drug A – 5 Samples)<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#manual-calculation-example-drug-a-5-samples-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Example data (first 5 patients of Drug A):</p>
+<table>
+<thead>
+<tr class="header">
+<th>PatientID</th>
+<th>BP_Reduction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>46.75</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>48.40</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>57.34</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>49.90</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>50.19</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 1 – Mean:</strong>
+<span class="math display">\[\bar{X} = \frac{46.75 + 48.40 + 57.34 + 49.90 + 50.19}{5} = 50.92\]</span></p>
+<p><strong>Step 2 – Median:</strong>
+Ordered data = (46.75, 48.40, 49.90, 50.19, 57.34)
+Median = 49.90 (middle value)</p>
+<p><strong>Step 3 – Mode:</strong>
+No repeated values → No mode (or all equally frequent).</p>
+</div>
+<div id="r-code-for-mean-median-and-mode-all-drugs-1" class="section level3 hasAnchor" number="3.6.2">
+<h3><span class="header-section-number">3.6.2</span> R Code for Mean, Median, and Mode (All Drugs)<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#r-code-for-mean-median-and-mode-all-drugs-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-1" tabindex="-1"></a><span class="co"># Function to compute mode manually</span></span>
+<span id="cb7-2"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-2" tabindex="-1"></a>get_mode <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb7-3"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-3" tabindex="-1"></a>  uniq_x <span class="ot">&lt;-</span> <span class="fu">unique</span>(x)</span>
+<span id="cb7-4"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-4" tabindex="-1"></a>  uniq_x[<span class="fu">which.max</span>(<span class="fu">tabulate</span>(<span class="fu">match</span>(x, uniq_x)))]</span>
+<span id="cb7-5"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-5" tabindex="-1"></a>}</span>
+<span id="cb7-6"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-6" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-7" tabindex="-1"></a><span class="co"># Compute CT measures per drug</span></span>
+<span id="cb7-8"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-8" tabindex="-1"></a>central_tendency <span class="ot">&lt;-</span> drug_data <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-9" tabindex="-1"></a>  <span class="fu">group_by</span>(Drug) <span class="sc">%&gt;%</span></span>
+<span id="cb7-10"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-10" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb7-11"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-11" tabindex="-1"></a>    <span class="at">Mean =</span> <span class="fu">mean</span>(BP_Reduction),</span>
+<span id="cb7-12"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-12" tabindex="-1"></a>    <span class="at">Median =</span> <span class="fu">median</span>(BP_Reduction),</span>
+<span id="cb7-13"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-13" tabindex="-1"></a>    <span class="at">Mode =</span> <span class="fu">get_mode</span>(<span class="fu">round</span>(BP_Reduction, <span class="dv">1</span>))</span>
+<span id="cb7-14"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-14" tabindex="-1"></a>  )</span>
+<span id="cb7-15"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-15" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-16" tabindex="-1"></a><span class="fu">datatable</span>(central_tendency <span class="sc">%&gt;%</span></span>
+<span id="cb7-17"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-17" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span><span class="fu">round</span>(., <span class="dv">2</span>))),</span>
+<span id="cb7-18"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb7-18" tabindex="-1"></a>          <span class="at">options =</span> <span class="fu">list</span>(<span class="at">dom =</span> <span class="st">&#39;t&#39;</span>, <span class="at">paging =</span> <span class="cn">FALSE</span>))</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-09401e3c3fa593e9c179" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-09401e3c3fa593e9c179">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["Drug A","Drug B","Drug C"],[50,50,50],[49.86,48.94,43.28],[48.4,48.2,39.9]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Drug<\/th>\n      <th>Mean<\/th>\n      <th>Median<\/th>\n      <th>Mode<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"className":"dt-right","targets":[2,3,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Drug","targets":1},{"name":"Mean","targets":2},{"name":"Median","targets":3},{"name":"Mode","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Mean</strong> shows the average reduction (≈ 50 mmHg for all drugs).</li>
+<li><strong>Median</strong> confirms central stability.</li>
+<li><strong>Mode</strong> represents the most frequent reduction value.</li>
+</ul>
+<p>Since the mean ≈ median ≈ mode for <strong>Drug A</strong>, the data are <strong>symmetrical</strong>.
+Drug C likely shows more deviation — suggesting skewness or outliers.</p>
+</div>
+</div>
+<div id="measures-of-dispersion-1" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Measures of Dispersion<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#measures-of-dispersion-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="manual-calculation-drug-a-same-5-samples-1" class="section level3 hasAnchor" number="3.7.1">
+<h3><span class="header-section-number">3.7.1</span> Manual Calculation (Drug A – Same 5 samples)<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#manual-calculation-drug-a-same-5-samples-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<thead>
+<tr class="header">
+<th>(X_i)</th>
+<th>(X_i - {X})</th>
+<th>((X_i - {X})^2)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>46.75</td>
+<td>-4.17</td>
+<td>17.39</td>
+</tr>
+<tr class="even">
+<td>48.40</td>
+<td>-2.52</td>
+<td>6.35</td>
+</tr>
+<tr class="odd">
+<td>57.34</td>
+<td>6.42</td>
+<td>41.24</td>
+</tr>
+<tr class="even">
+<td>49.90</td>
+<td>-1.02</td>
+<td>1.04</td>
+</tr>
+<tr class="odd">
+<td>50.19</td>
+<td>-0.73</td>
+<td>0.53</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\text{Variance} = \frac{\sum (X_i - \bar{X})^2}{n-1} = \frac{66.55}{4} = 16.64\]</span>
+<span class="math display">\[\text{Standard Deviation} = \sqrt{16.64} = 4.08\]</span>
+<span class="math display">\[\text{Range} = 57.34 - 46.75 = 10.59\]</span></p>
+<p>Bagian itu adalah <strong>contoh perhitungan manual untuk mengukur <em>Statistical Dispersion</em></strong> — khususnya untuk <strong>Drug A</strong>, menggunakan <strong>5 sampel pertama</strong> dari dataset kamu (<code>BP_Reduction</code>).</p>
+<blockquote>
+<p>Artinya, kita ambil 5 pasien pertama yang mendapat Drug A, lalu kita hitung <em>mean</em>, <em>deviasi dari mean</em>, <em>kuadrat deviasi</em>, <em>variance</em>, <em>standard deviation</em>, dan <em>range</em>.</p>
+</blockquote>
+<p>Ambil 5 data pertama (Drug A)</p>
+<table>
+<thead>
+<tr class="header">
+<th>PatientID</th>
+<th>Drug</th>
+<th>BP_Reduction</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Drug A</td>
+<td><strong>46.7456</strong></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Drug A</td>
+<td><strong>48.3971</strong></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Drug A</td>
+<td><strong>57.3415</strong></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Drug A</td>
+<td><strong>49.9005</strong></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Drug A</td>
+<td><strong>50.1944</strong></td>
+</tr>
+</tbody>
+</table>
+<p>nilai kolom <strong>BP_Reduction</strong> yang dipakai dalam tabel perhitungan manual.</p>
+<p>Langkah perhitungan satu per satu</p>
+</div>
+<div id="a-hitung-mean-rata-rata-1" class="section level3 hasAnchor" number="3.7.2">
+<h3><span class="header-section-number">3.7.2</span> (a) Hitung <strong>mean (rata-rata)</strong><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#a-hitung-mean-rata-rata-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math inline">\(\bar{X} = \frac{46.75 + 48.40 + 57.34 + 49.90 + 50.19}{5}\)</span></p>
+<p><span class="math inline">\(\bar{X} = \frac{252.58}{5} = 50.52\)</span></p>
+</div>
+<div id="b-hitung-deviasi-dari-mean-untuk-setiap-nilai-1" class="section level3 hasAnchor" number="3.7.3">
+<h3><span class="header-section-number">3.7.3</span> (b) Hitung <strong>deviasi dari mean</strong> untuk setiap nilai<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#b-hitung-deviasi-dari-mean-untuk-setiap-nilai-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math inline">\(X_i - \bar{X}\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\((X_i)\)</span></th>
+<th><span class="math inline">\((X_i - \bar{X})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>46.75</td>
+<td>-3.77</td>
+</tr>
+<tr class="even">
+<td>48.40</td>
+<td>-2.12</td>
+</tr>
+<tr class="odd">
+<td>57.34</td>
+<td>+6.82</td>
+</tr>
+<tr class="even">
+<td>49.90</td>
+<td>-0.62</td>
+</tr>
+<tr class="odd">
+<td>50.19</td>
+<td>-0.33</td>
+</tr>
+</tbody>
+</table>
+<p><em>(pada tabel contoh, pembulatan sedikit berbeda ±0.4 karena dibulatkan ke 2 desimal → jadinya -4.17, -2.52, dll.)</em></p>
+</div>
+<div id="c-hitung-kuadrat-deviasi-1" class="section level3 hasAnchor" number="3.7.4">
+<h3><span class="header-section-number">3.7.4</span> (c) Hitung <strong>kuadrat deviasi</strong><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#c-hitung-kuadrat-deviasi-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math inline">\((X_i - \bar{X})^2\)</span></p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\((X_i - \bar{X})\)</span></th>
+<th><span class="math inline">\(((X_i - \bar{X})^2)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-3.77</td>
+<td>14.20</td>
+</tr>
+<tr class="even">
+<td>-2.12</td>
+<td>4.49</td>
+</tr>
+<tr class="odd">
+<td>+6.82</td>
+<td>46.54</td>
+</tr>
+<tr class="even">
+<td>-0.62</td>
+<td>0.38</td>
+</tr>
+<tr class="odd">
+<td>-0.33</td>
+<td>0.11</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(\sum (X_i - \bar{X})^2 = 14.20 + 4.49 + 46.54 + 0.38 + 0.11 = 65.72\)</span></p>
+</div>
+<div id="d-hitung-variance-s²-1" class="section level3 hasAnchor" number="3.7.5">
+<h3><span class="header-section-number">3.7.5</span> (d) Hitung <strong>Variance (s²)</strong><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#d-hitung-variance-s%C2%B2-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math inline">\(s^2 = \frac{\sum (X_i - \bar{X})^2}{n-1} = \frac{65.72}{4} = 16.43\)</span></p>
+<p>(Tabel contoh: 66.55 / 4 = <strong>16.64</strong>)</p>
+</div>
+<div id="e-hitung-standard-deviation-s-1" class="section level3 hasAnchor" number="3.7.6">
+<h3><span class="header-section-number">3.7.6</span> (e) Hitung <strong>Standard Deviation (s)</strong><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#e-hitung-standard-deviation-s-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math inline">\(s = \sqrt{16.64} = 4.08\)</span></p>
+<p>→ Artinya, rata-rata jarak setiap data dari mean adalah sekitar <strong>4.08 mmHg.</strong></p>
+</div>
+<div id="f-hitung-range-1" class="section level3 hasAnchor" number="3.7.7">
+<h3><span class="header-section-number">3.7.7</span> (f) Hitung <strong>Range</strong><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#f-hitung-range-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math inline">\(R = X_{max} - X_{min} = 57.34 - 46.75 = 10.59\)</span></p>
+<p>→ Rentang nilai dari pasien dengan efek paling kecil dan paling besar dalam sampel = <strong>10.59 mmHg</strong>.</p>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="18%" />
+<col width="64%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kolom</th>
+<th>Arti</th>
+<th>Kenapa penting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(( X_i )\)</span></td>
+<td>Data asli (BP_Reduction)</td>
+<td>Nilai aktual dari masing-masing pasien.</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(( X_i - \bar{X} )\)</span></td>
+<td>Deviasi dari mean</td>
+<td>Mengukur seberapa jauh tiap pasien dari rata-rata efek obat.</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(( (X_i - \bar{X})^2 )\)</span></td>
+<td>Kuadrat deviasi</td>
+<td>Dipakai untuk menghilangkan tanda negatif dan memperbesar pengaruh nilai ekstrem.</td>
+</tr>
+<tr class="even">
+<td><strong>Variance</strong></td>
+<td>Rata-rata kuadrat deviasi</td>
+<td>Ukuran sebaran data dari rata-rata. Semakin besar → semakin tidak konsisten hasil obat.</td>
+</tr>
+<tr class="odd">
+<td><strong>Standard Deviation</strong></td>
+<td>Akar dari variance</td>
+<td>Mengembalikan satuan ke mmHg, jadi bisa langsung diinterpretasi.</td>
+</tr>
+<tr class="even">
+<td><strong>Range</strong></td>
+<td>Selisih maksimum–minimum</td>
+<td>Ukuran kasar seberapa lebar variasi data.</td>
+</tr>
+</tbody>
+</table>
+<p>Interpretasi akhir</p>
+<ul>
+<li><p><strong>Mean (≈50.5)</strong> menunjukkan efek rata-rata obat dalam menurunkan tekanan darah.</p></li>
+<li><p><strong>Standard deviation (≈4.08)</strong> kecil → artinya variasi antar pasien masih cukup konsisten.</p></li>
+<li><p><strong>Range (≈10.6)</strong> kecil → tidak ada pasien dengan respons ekstrem.</p></li>
+<li><p>Jadi, untuk <strong>Drug A</strong>, hasil obatnya <strong>konsisten dan stabil</strong>.</p></li>
+</ul>
+</div>
+<div id="r-code-for-range-variance-and-sd-all-drugs-1" class="section level3 hasAnchor" number="3.7.8">
+<h3><span class="header-section-number">3.7.8</span> 7.2 R Code for Range, Variance, and SD (All Drugs)<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#r-code-for-range-variance-and-sd-all-drugs-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-1" tabindex="-1"></a>drug_summary <span class="ot">&lt;-</span> drug_data <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Drug) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb8-4"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-4" tabindex="-1"></a>    <span class="at">Mean =</span> <span class="fu">mean</span>(BP_Reduction),</span>
+<span id="cb8-5"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-5" tabindex="-1"></a>    <span class="at">Median =</span> <span class="fu">median</span>(BP_Reduction),</span>
+<span id="cb8-6"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-6" tabindex="-1"></a>    <span class="at">Mode =</span> <span class="fu">get_mode</span>(<span class="fu">round</span>(BP_Reduction, <span class="dv">1</span>)),</span>
+<span id="cb8-7"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-7" tabindex="-1"></a>    <span class="at">Min =</span> <span class="fu">min</span>(BP_Reduction),</span>
+<span id="cb8-8"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-8" tabindex="-1"></a>    <span class="at">Max =</span> <span class="fu">max</span>(BP_Reduction),</span>
+<span id="cb8-9"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-9" tabindex="-1"></a>    <span class="at">Range =</span> Max <span class="sc">-</span> Min,</span>
+<span id="cb8-10"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-10" tabindex="-1"></a>    <span class="at">Variance =</span> <span class="fu">var</span>(BP_Reduction),</span>
+<span id="cb8-11"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-11" tabindex="-1"></a>    <span class="at">SD =</span> <span class="fu">sd</span>(BP_Reduction)</span>
+<span id="cb8-12"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-12" tabindex="-1"></a>  )</span>
+<span id="cb8-13"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-13" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-14" tabindex="-1"></a><span class="fu">datatable</span>(drug_summary <span class="sc">%&gt;%</span></span>
+<span id="cb8-15"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-15" tabindex="-1"></a>            <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span><span class="fu">round</span>(., <span class="dv">2</span>))),</span>
+<span id="cb8-16"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb8-16" tabindex="-1"></a>          <span class="at">options =</span> <span class="fu">list</span>(<span class="at">dom =</span> <span class="st">&#39;t&#39;</span>, <span class="at">paging =</span> <span class="cn">FALSE</span>))</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-503bef5f048e6c9f23b6" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-503bef5f048e6c9f23b6">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["Drug A","Drug B","Drug C"],[50,50,50],[49.86,48.94,43.28],[48.4,48.2,39.9],[38,39.15,21.67],[60.48,84.42,195.7],[22.48,45.27,174.03],[20.83,54.29,657.49],[4.56,7.37,25.64]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Drug<\/th>\n      <th>Mean<\/th>\n      <th>Median<\/th>\n      <th>Mode<\/th>\n      <th>Min<\/th>\n      <th>Max<\/th>\n      <th>Range<\/th>\n      <th>Variance<\/th>\n      <th>SD<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,8,9]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Drug","targets":1},{"name":"Mean","targets":2},{"name":"Median","targets":3},{"name":"Mode","targets":4},{"name":"Min","targets":5},{"name":"Max","targets":6},{"name":"Range","targets":7},{"name":"Variance","targets":8},{"name":"SD","targets":9}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Drug A:</strong> Small range and SD → most consistent response.</li>
+<li><strong>Drug B:</strong> Moderate spread → some mild outliers.</li>
+<li><strong>Drug C:</strong> Very high SD and variance → widely varying patient responses, possible extreme outliers.</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="visualization-for-central-tendency-and-dispersion-1" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Visualization for Central Tendency and Dispersion<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#visualization-for-central-tendency-and-dispersion-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="boxplot-violin-plot-1" class="section level3 hasAnchor" number="3.8.1">
+<h3><span class="header-section-number">3.8.1</span> Boxplot + Violin Plot<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#boxplot-violin-plot-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-1" tabindex="-1"></a><span class="fu">ggplot</span>(drug_data, <span class="fu">aes</span>(<span class="at">x =</span> Drug, <span class="at">y =</span> BP_Reduction, <span class="at">fill =</span> Drug)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-2" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">trim =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.15</span>, <span class="at">outlier.color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-4" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">shape =</span> <span class="dv">23</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-5" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb9-6"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-6" tabindex="-1"></a>    <span class="at">data =</span> drug_summary,</span>
+<span id="cb9-7"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-7" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Drug, <span class="at">y =</span> Mean <span class="sc">+</span> <span class="dv">3</span>, <span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">&quot;Mean = &quot;</span>, <span class="fu">round</span>(Mean, <span class="dv">2</span>))),</span>
+<span id="cb9-8"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-8" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="fl">3.5</span>, <span class="at">fontface =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">inherit.aes =</span> <span class="cn">FALSE</span></span>
+<span id="cb9-9"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-9" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-10" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-11"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-11" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Drug Effects: Equal Means (~50) but Different Dispersions&quot;</span>,</span>
+<span id="cb9-12"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-12" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Drug A = consistent | Drug B = moderate variability | Drug C = high variability&quot;</span>,</span>
+<span id="cb9-13"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-13" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Drug Type&quot;</span>,</span>
+<span id="cb9-14"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-14" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;BP Reduction (mmHg)&quot;</span></span>
+<span id="cb9-15"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-15" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-16"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-16" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb9-17"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb9-17" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="Analysis-and-Predictive-Modelling_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><strong>Drug A:</strong> Symmetrical violin and compact box → consistent reductions (low SD).</li>
+<li><strong>Drug B:</strong> Slight widening at the top → moderate variation, some outliers.</li>
+<li><strong>Drug C:</strong> Long right tail → high variability (right-skewed).</li>
+</ul>
+</div>
+<div id="histogram-density-1" class="section level3 hasAnchor" number="3.8.2">
+<h3><span class="header-section-number">3.8.2</span> Histogram + Density<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#histogram-density-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-1" tabindex="-1"></a>density_peaks <span class="ot">&lt;-</span> drug_data <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Drug) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">PeakY =</span> <span class="fu">max</span>(<span class="fu">density</span>(BP_Reduction)<span class="sc">$</span>y))</span>
+<span id="cb10-4"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-4" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-5" tabindex="-1"></a>label_data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(drug_summary, density_peaks, <span class="at">by =</span> <span class="st">&quot;Drug&quot;</span>)</span>
+<span id="cb10-6"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-6" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-7" tabindex="-1"></a><span class="fu">ggplot</span>(drug_data, <span class="fu">aes</span>(<span class="at">x =</span> BP_Reduction, <span class="at">fill =</span> Drug)) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-8" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)), <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">bins =</span> <span class="dv">60</span>) <span class="sc">+</span></span>
+<span id="cb10-9"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-9" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">color =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb10-10"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-10" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">data =</span> drug_summary, <span class="fu">aes</span>(<span class="at">xintercept =</span> Mean, <span class="at">color =</span> Drug), <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb10-11"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-11" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb10-12"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-12" tabindex="-1"></a>    <span class="at">data =</span> label_data,</span>
+<span id="cb10-13"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-13" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Mean, <span class="at">y =</span> PeakY <span class="sc">+</span> <span class="fl">0.005</span>, <span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">&quot;Mean = &quot;</span>, <span class="fu">round</span>(Mean, <span class="dv">2</span>))),</span>
+<span id="cb10-14"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-14" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">size =</span> <span class="fl">3.5</span>, <span class="at">fontface =</span> <span class="st">&quot;bold&quot;</span></span>
+<span id="cb10-15"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-15" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-16"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-16" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Drug, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-17"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-17" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-18"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-18" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Distribution of Blood Pressure Reduction by Drug&quot;</span>,</span>
+<span id="cb10-19"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-19" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Equal means (~50 mmHg) but different dispersions&quot;</span>,</span>
+<span id="cb10-20"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-20" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;BP Reduction (mmHg)&quot;</span>,</span>
+<span id="cb10-21"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-21" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Density&quot;</span></span>
+<span id="cb10-22"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-22" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-23"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-23" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb10-24"><a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#cb10-24" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="Analysis-and-Predictive-Modelling_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="scatterplot-by-patient-1" class="section level3 hasAnchor" number="3.8.3">
+<h3><span class="header-section-number">3.8.3</span> Scatterplot by Patient<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#scatterplot-by-patient-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="Analysis-and-Predictive-Modelling_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+</div>
+<div id="conclusion-1" class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> Conclusion<a href="case-study-ii-statistical-dispersion-and-central-tendency-1.html#conclusion-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="10%" />
+<col width="11%" />
+<col width="13%" />
+<col width="64%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Drug</th>
+<th>Mean (mmHg)</th>
+<th>SD (mmHg)</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Drug A</strong></td>
+<td>≈ 50</td>
+<td>Low (~4–5)</td>
+<td>Highly consistent results, normal distribution.</td>
+</tr>
+<tr class="even">
+<td><strong>Drug B</strong></td>
+<td>≈ 50</td>
+<td>Moderate (~7)</td>
+<td>A few outliers → moderate variability.</td>
+</tr>
+<tr class="odd">
+<td><strong>Drug C</strong></td>
+<td>≈ 50</td>
+<td>High (~25)</td>
+<td>Right-skewed distribution → large variation, unstable results.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Summary:</strong>
+All drugs achieve similar average blood pressure reduction (≈ 50 mmHg), but the <em>dispersion</em> reveals different levels of consistency:</p>
+<ul>
+<li>Drug A is <strong>most stable</strong>,</li>
+<li>Drug B has <strong>mild variability</strong>,</li>
+<li>Drug C shows <strong>high inconsistency</strong> due to outliers and skewness.</li>
+</ul>
+<p>Hence, <strong>Drug A</strong> is statistically the most reliable in terms of treatment consistency.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="case-study-ii-statistical-dispersion-and-central-tendency.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/urvynous/Analysis-and-Predictive-Modelling/edit/main/03-race.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/urvynous/Analysis-and-Predictive-Modelling/blob/main/03-race.Rmd",
+    "text": null
+  },
+  "download": ["Analysis-and-Predictive-Modelling.pdf", "Analysis-and-Predictive-Modelling.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "none",
+    "float": false,
+    "before_body": "<img src="images/azky.jpg" alt="Logo" width="100">n"
+  },
+  "toolbar": {
+    "position": "none"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

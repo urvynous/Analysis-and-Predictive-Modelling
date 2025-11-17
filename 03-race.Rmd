@@ -16,7 +16,7 @@ for $( k = 1, 2, \dots, K-1 )$ and the baseline category $( K )$ is given by:
 
 $$P(Y = K | X) = \frac{1}{1 + \sum_{j=1}^{K-1} \exp(\beta_{j0} + \beta_{j1}x_1 + \dots + \beta_{jp}x_p)}$$
 
-**where:**
+*where:*
 
 - $( P(Y = k | X) )$: probability of class $( k )$ given predictors $( X )$  
 
@@ -26,7 +26,7 @@ $$P(Y = K | X) = \frac{1}{1 + \sum_{j=1}^{K-1} \exp(\beta_{j0} + \beta_{j1}x_1 +
 
 
 
-**Interpretation**
+*Interpretation*
 
 The exponential of the estimated coefficient, $( e^{\beta_{kj}} )$, represents the odds ratio of being in category $( k )$ compared to the reference class for a one-unit increase in predictor $( x_j )$.
 
@@ -122,7 +122,7 @@ is mathematically consistent with the normalization logic and semantically valid
 This validation confirms that the encoded variable Success_Level accurately reflects varying degrees of business performance and is statistically ready for multiclass predictive modeling using multinomial logistic regression.
 
 
-**Creating Multinomial logistic regression**
+*Creating Multinomial logistic regression*
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 library(nnet)
