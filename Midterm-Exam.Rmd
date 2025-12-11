@@ -1,0 +1,462 @@
+# Midterm Exam 
+
+## Import Library 
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(plotly)
+library(cowplot)
+library(broom)
+library(caret)
+library(car)
+library(lmtest)
+library(Metrics)
+library(ggthemes)
+library(reshape2)
+library(stargazer)
+
+theme_set(theme_minimal(base_size = 12) +
+            theme(panel.grid.major = element_line(size = 0.25),
+                  panel.grid.minor = element_blank()))
+
+mse <- function(actual, predicted) mean((actual - predicted)^2)
+rmse <- function(actual, predicted) sqrt(mse(actual, predicted))
+r2 <- function(actual, predicted) {
+  ss_res <- sum((actual - predicted)^2)
+  ss_tot <- sum((actual - mean(actual))^2)
+  1 - ss_res/ss_tot
+}
+mape <- function(actual, predicted) mean(abs((actual - predicted) / actual)) * 100
+```
+
+## Load Data
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+df <- read.csv("C:/Users/Acer/Documents/Analysis-and-Predictive-Modelling/data/wine+quality/white_wine_clean.csv")
+
+head(df)
+```
+
+## Identifikasi Masalah
+
+- Tujuan : Memprediksi Kualitas Wine berdasarkan 11 variabel kimia
+
+- Metode : Regresi Linear
+
+- Dataset: White Wine Quality Dataset (UCI)
+
+- Perbandingan : Membandingkan dengan model lain
+
+- Link : https://archive.ics.uci.edu/dataset/186/wine%2Bquality
+
+## EDA (Exploratory Data Analysis)
+
+### Data Information
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+map_dtype <- function(x) {
+  if (is.integer(x)) {
+    return("int64")
+  } else if (is.numeric(x)) {
+    return("float64")
+  } else if (is.character(x)) {
+    return("object")
+  } else if (is.factor(x)) {
+    return("category")
+  } else {
+    return(class(x)[1])
+  }
+}
+
+info_df <- data.frame(
+  Column = names(df),
+  Dtype = sapply(df, map_dtype),
+  NonNull = sapply(df, function(x) sum(!is.na(x))),
+  stringsAsFactors = FALSE
+)
+
+info_df
+```
+
+### Statistic Descriptive
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+describe_df <- data.frame(
+  Variable = names(df),
+  Count = sapply(df, function(x) sum(!is.na(x))),
+  Mean  = sapply(df, mean),
+  Std   = sapply(df, sd),
+  Min   = sapply(df, min),
+  Q25   = sapply(df, function(x) quantile(x, 0.25)),
+  Q50   = sapply(df, median),
+  Q75   = sapply(df, function(x) quantile(x, 0.75)),
+  Max   = sapply(df, max),
+  row.names = NULL
+)
+
+describe_df
+```
+
+### Cek Missing Value
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+colSums(is.na(df))
+```
+
+### Variable Distribution
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+num_cols <- df[sapply(df, is.numeric)]
+
+# buat dropdown options
+dropdown_opts <- lapply(names(num_cols), function(col) {
+  list(method = "restyle",
+       args = list("x", list(num_cols[[col]])),
+       label = col)
+})
+
+plot_ly(x = num_cols[[1]], type = "histogram") %>%
+  layout(
+    title = "Histogram",
+    updatemenus = list(
+      list(
+        y = 1.2,
+        buttons = dropdown_opts,
+        type = "dropdown"
+      )
+    )
+  )
+```
+
+### Scatter Plot terhadap kualiitas
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+col_alcohol <- names(df)[grepl("alcohol", names(df), ignore.case = TRUE)]
+
+plot_ly(
+  data = df,
+  x = df[[col_alcohol]],
+  y = df$quality,
+  type = "scatter",
+  mode = "markers",
+  opacity = 0.6
+) %>% 
+  layout(title = "Alcohol vs Quality",
+         xaxis = list(title = col_alcohol),
+         yaxis = list(title = "quality"))
+```
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+col_va <- names(df)[grepl("volatile", names(df), ignore.case = TRUE)]
+
+plot_ly(
+  data = df,
+  x = df[[col_va]],
+  y = df$quality,
+  type = "scatter",
+  mode = "markers",
+  opacity = 0.6
+) %>% 
+  layout(title = "Volatile Acidity vs Quality",
+         xaxis = list(title = col_va),
+         yaxis = list(title = "quality"))
+```
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+col_density <- names(df)[grepl("density", names(df), ignore.case = TRUE)]
+
+plot_ly(
+  data = df,
+  x = df[[col_density]],
+  y = df$quality,
+  type = "scatter",
+  mode = "markers",
+  opacity = 0.6
+) %>% 
+  layout(title = "Density vs Quality",
+         xaxis = list(title = col_density),
+         yaxis = list(title = "quality"))
+```
+
+Kenapa Scatter Interaktif hanya untuk 3 variabel?
+
+Scatter plot interaktif hanya ditampilkan untuk tiga variabel utama
+(alcohol, volatile acidity, density) karena:
+
+- Ketiganya memiliki korelasi tertinggi dengan quality.
+
+- Scatter 11 variabel interaktif sangat berat untuk dijalankan (±54 ribu titik).
+
+- Menampilkan seluruh scatter interaktif tidak efisien dan tidak menambah nilai analisis.
+
+## Heatmap Correlation
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+corr_matrix <- round(cor(df, use = "complete.obs"), 2)
+
+p <- plot_ly(
+  x = colnames(corr_matrix),
+  y = rownames(corr_matrix),
+  z = corr_matrix,
+  type = "heatmap",
+  colorscale = "RdBu",   # warna merah-biru asli
+  reversescale = FALSE,  # dikembalikan ke default agar cocok dengan seaborn
+  zmin = -1,
+  zmax = 1
+)
+
+annotations <- list()
+for (i in 1:nrow(corr_matrix)) {
+  for (j in 1:ncol(corr_matrix)) {
+    annotations <- c(annotations, list(
+      list(
+        x = colnames(corr_matrix)[j],
+        y = rownames(corr_matrix)[i],
+        text = corr_matrix[i, j],
+        showarrow = FALSE,
+        font = list(color = "black", size = 10)
+      )
+    ))
+  }
+}
+
+p <- layout(
+  p,
+  title = "Heatmap Korelasi (Interaktif + Label)",
+  annotations = annotations,
+  xaxis = list(title = ""),
+  yaxis = list(title = "")
+)
+
+p
+```
+
+## Linear Regression Models
+
+### Split Data 
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+set.seed(123)
+
+X <- df[, setdiff(names(df), "quality")]
+y <- df$quality
+
+train_index <- createDataPartition(y, p = 0.8, list = FALSE)
+
+X_train <- X[train_index, ]
+X_test  <- X[-train_index, ]
+
+y_train <- y[train_index]
+y_test  <- y[-train_index]
+```
+
+### Statistics Models
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# Tambahkan intercept (setara add_constant)
+X_sm <- cbind(constant = 1, X_train)
+
+# Bentuk dataframe untuk OLS
+stats_data <- data.frame(quality = y_train, X_sm)
+
+# OLS model (setara sm.OLS)
+model_sm <- lm(quality ~ ., data = stats_data)
+
+# Summary lengkap (mirip sm.OLS().summary())
+summary(model_sm)
+```
+
+## Uji Asumsi Model 
+
+### Residuals & Fitte
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+residuals <- resid(model_sm)
+fitted <- fitted(model_sm)
+```
+
+### Normalitas Residual (Shapiro-Wilk)
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+shapiro_test <- shapiro.test(residuals)
+shapiro_test
+```
+
+### QQ Plot
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# Ambil data QQ tanpa plot
+qq_data <- qqnorm(residuals, plot = FALSE)
+
+qq_theoretical <- qq_data$x
+qq_sample <- qq_data$y
+
+fig <- plot_ly()
+
+fig <- fig %>%
+  add_markers(
+    x = qq_theoretical,
+    y = qq_sample,
+    name = "Residual Points",
+    marker = list(size = 5, opacity = 0.7)
+  ) %>%
+  add_lines(
+    x = qq_theoretical,
+    y = qq_theoretical,
+    name = "Reference Line (45°)",
+    line = list(color = "orange")
+  ) %>%
+  layout(
+    title = "QQ Plot Residuals (Interactive)",
+    xaxis = list(title = "Theoretical Quantiles"),
+    yaxis = list(title = "Sample Quantiles"),
+    height = 500,
+    width = 700
+  )
+
+fig
+```
+
+### Homoskedastitas (Breusch-Pagan)
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# Breusch-Pagan Test (setara dengan het_breuschpagan)
+bp_test <- bptest(model_sm)
+
+cat("Breusch-Pagan => stat:", bp_test$statistic, 
+    " p-value:", bp_test$p.value, "\n")
+```
+
+### Auto-Correlation (Durbin Watson)
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# Durbin-Watson Test (setara dengan durbin_watson(residuals))
+dw_test <- durbinWatsonTest(model_sm)
+
+cat("Durbin Watson:", dw_test$dw, "\n")
+```
+
+### Multikolinearitas (VIF)
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+df_scaled <- as.data.frame(scale(df))
+
+model_scaled <- lm(quality ~ ., data = df_scaled)
+vif(model_scaled)
+```
+
+
+## Fit model (Sklearn) & Evaluation
+
+### Training Models
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# --- Split Data ---
+set.seed(123)
+index <- sample(1:nrow(df), 0.8 * nrow(df))
+
+X_train <- df[index, !(names(df) == "quality")]
+y_train <- df[index, "quality"]
+
+X_test  <- df[-index, !(names(df) == "quality")]
+y_test  <- df[-index, "quality"]
+
+# --- Buat train_data (supaya lm() tidak error) ---
+train_data <- cbind(X_train, quality = y_train)
+
+# --- Linear Regression (sama seperti linr.fit) ---
+linr <- lm(quality ~ ., data = train_data)
+
+# --- Prediksi (padanan linr.predict(X_test)) ---
+y_pred <- predict(linr, newdata = X_test)
+
+# --- Tampilkan hasil prediksi ---
+print(head(y_pred))
+```
+
+### Evaluation
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+r2_val   <- r2(y_test, y_pred)
+mse_val  <- mse(y_test, y_pred)
+rmse_val <- rmse(y_test, y_pred)
+mape_val <- mape(y_test, y_pred)
+
+cat("R²   :", round(r2_val, 4), "\n")
+cat("MSE  :", round(mse_val, 4), "\n")
+cat("RMSE :", round(rmse_val, 4), "\n")
+cat("MAPE :", round(mape_val, 4), "%\n")
+
+```
+
+## Visualization 
+
+### Actual vs Predicted
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+fig <- plot_ly() %>%
+  add_trace(
+    x = y_test,
+    y = y_pred,
+    type = 'scatter',
+    mode = 'markers',
+    name = 'Data Points',
+    marker = list(size = 6, opacity = 0.6)
+  )
+
+min_val <- min(min(y_test), min(y_pred))
+max_val <- max(max(y_test), max(y_pred))
+
+fig <- fig %>%
+  add_trace(
+    x = c(min_val, max_val),
+    y = c(min_val, max_val),
+    type = 'scatter',
+    mode = 'lines',
+    name = 'Perfect Prediction Line',
+    line = list(color = 'red', dash = 'dash')
+  ) %>%
+  layout(
+    title = "Actual vs Predicted (Interactive)",
+    xaxis = list(title = "Actual Quality"),
+    yaxis = list(title = "Predicted Quality"),
+    height = 500,
+    width = 700
+  )
+
+fig
+```
+
+### Residual Plots
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+fig <- plot_ly() %>%
+  add_trace(
+    x = fitted,
+    y = residuals,
+    type = 'scatter',
+    mode = 'markers',
+    name = "Residuals",
+    marker = list(size = 6, opacity = 0.6)
+  ) %>%
+  add_trace(
+    x = c(min(fitted), max(fitted)),
+    y = c(0, 0),
+    type = 'scatter',
+    mode = 'lines',
+    name = 'Zero Line',
+    line = list(color = 'red', dash = 'dot')
+  ) %>%
+  layout(
+    title = "Residuals vs Fitted (Interactive)",
+    xaxis = list(title = "Fitted Values"),
+    yaxis = list(title = "Residuals"),
+    height = 500,
+    width = 700
+  )
+
+fig
+```

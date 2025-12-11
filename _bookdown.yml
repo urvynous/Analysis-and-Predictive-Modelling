@@ -6,9 +6,11 @@ view: https://github.com/urvynous/Analysis-and-Predictive-Modelling/blob/main/%s
 language:
   ui:
     chapter_name: ""
+    
 rmd_files:
   - index.Rmd
   - 02-tears.Rmd
   - 03-race.Rmd
+  - chapter1.Rmd
 
 

@@ -1,0 +1,5 @@
+# Case Study ii: Comparing 2 Types Logistics Regression
+
+## Multinomial Logistic
+
+### Definition of Multinomial Logistic
