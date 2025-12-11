@@ -1,5 +1,86 @@
 # Case Study II: Unsupervised Deep Clustering of COVID-19 Symptom Patterns Using Autoencoder, SOM, and Spectral Methods
 
-## Multinomial Logistic
+## Introduction
+### Background
+### Research Problem
+### Research Objectives
+### Relevance of Clustering
 
-### Definition of Multinomial Logistic
+---
+## Dataset Description
+### Data Source
+### Context
+### Variable Description
+
+
+---
+## Exploratory Data Analysis
+### Descriptive Statistics
+### Missig Value Assessment
+### Correlation Structure
+### Outlier Detection
+
+
+---
+## Data Preprocessing
+### Data Cleaning
+### Encoding
+### Scaling
+### Train-Validation Plit
+
+
+---
+## Dimensionality Reduction
+### PCA
+### t-SNE / UMAP
+
+
+---
+## Clustering Methods
+### Autoencoder-Based Deep Clustering
+#### Mathematical Formulation
+#### Architecture & Hyperparamters
+#### Latent Space Extraction
+#### Clustering on Latent Representations
+
+### Self-Organizing Map
+#### Definition
+#### Mathematical Model
+#### Hyperparameters
+#### Visualization Tools
+
+### Spectral Clustering
+#### Definition
+#### Mathematical Formulation
+#### Steps
+#### Hyperparameters
+
+### Evaluation Framework
+#### Internal Evaluatio Metrics
+#### Stability Analysis
+#### Computational Efficiency
+#### Interpretability Assessment
+
+
+---
+## Visualization of Results
+### Cluster Plots
+### Heatmaps
+### SOM
+
+
+---
+## Discussion
+### Cross-method Comparison
+### Clinical Interpretation
+### Strengths and Limitations
+
+
+---
+## Conclusion
+
+
+---
+## References
+
+
