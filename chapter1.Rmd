@@ -1,4 +1,4 @@
-# Case Study ii: Comparing 2 Types Logistics Regression
+# Case Study II: Unsupervised Deep Clustering of COVID-19 Symptom Patterns Using Autoencoder, SOM, and Spectral Methods
 
 ## Multinomial Logistic
 

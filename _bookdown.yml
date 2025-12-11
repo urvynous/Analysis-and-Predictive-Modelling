@@ -11,6 +11,8 @@ rmd_files:
   - index.Rmd
   - 02-tears.Rmd
   - 03-race.Rmd
+  - Midterm-Exam.Rmd
   - chapter1.Rmd
+  
 
 

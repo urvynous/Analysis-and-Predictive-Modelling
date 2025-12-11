@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Case Study II: Unsupervised Deep Clustering of COVID-19 Symptom Patterns Using Autoencoder, SOM, and Spectral Methods | Analysis and Predictive Modelling</title>
+  <meta name="description" content="5 Case Study II: Unsupervised Deep Clustering of COVID-19 Symptom Patterns Using Autoencoder, SOM, and Spectral Methods | Analysis and Predictive Modelling" />
+  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Case Study II: Unsupervised Deep Clustering of COVID-19 Symptom Patterns Using Autoencoder, SOM, and Spectral Methods | Analysis and Predictive Modelling" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Case Study II: Unsupervised Deep Clustering of COVID-19 Symptom Patterns Using Autoencoder, SOM, and Spectral Methods | Analysis and Predictive Modelling" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="midterm-exam.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<div class="sidebar-header">
+  <img src="images/azky.jpg" class="sidebar-logo">
+  <h2 class="sidebar-title">Analysis and Predictive Modelling</h2>
+  <div class="book-toolbar">
+    <div class="book-search">
+      <input type="text" placeholder="Search...">
+    </div>
+    <div class="icon-links">
+      <a href="https://github.com/" title="GitHub"><i class="fa fa-github"></i></a>
+      <a href="https://linkedin.com/" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+      <a href="#" title="Share"><i class="fa fa-share-alt"></i></a>
+      <a href="book.pdf" title="Download PDF"><i class="fa fa-file-pdf-o"></i></a>
+    </div>
+  </div>
+</div>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#predictive-analysis"><i class="fa fa-check"></i><b>1.1</b> Predictive Analysis</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#definition-of-predictive-analysis"><i class="fa fa-check"></i><b>1.1.1</b> Definition of Predictive Analysis</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#types-techniques-and-data-in-predictive-analytics"><i class="fa fa-check"></i><b>1.1.2</b> Types, Techniques, and Data in Predictive Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#predictive-analysis-concepts"><i class="fa fa-check"></i><b>1.2</b> Predictive Analysis Concepts</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#why-use-predictive-analysis"><i class="fa fa-check"></i><b>1.2.1</b> Why Use Predictive Analysis?</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#when-and-where-to-applied-predictive-analysis"><i class="fa fa-check"></i><b>1.2.2</b> When and Where to Applied Predictive Analysis?</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#who-involved-in-predictive-analysis"><i class="fa fa-check"></i><b>1.2.3</b> Who Involved in Predictive Analysis</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#how-to-implement-predictive-analysis"><i class="fa fa-check"></i><b>1.2.4</b> How to Implement Predictive Analysis?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#references"><i class="fa fa-check"></i><b>1.3</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="regression-models.html"><a href="regression-models.html"><i class="fa fa-check"></i><b>2</b> Regression Models</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="regression-models.html"><a href="regression-models.html#definition-of-regression-models"><i class="fa fa-check"></i><b>2.1</b> Definition of Regression Models</a></li>
+<li class="chapter" data-level="2.2" data-path="regression-models.html"><a href="regression-models.html#regression-models-and-types"><i class="fa fa-check"></i><b>2.2</b> Regression Models and Types</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="regression-models.html"><a href="regression-models.html#linear-regression-models"><i class="fa fa-check"></i><b>2.2.1</b> Linear Regression Models</a></li>
+<li class="chapter" data-level="2.2.2" data-path="regression-models.html"><a href="regression-models.html#example-simulate-dataset"><i class="fa fa-check"></i><b>2.2.2</b> Example: Simulate Dataset</a></li>
+<li class="chapter" data-level="2.2.3" data-path="regression-models.html"><a href="regression-models.html#non-linear-regression"><i class="fa fa-check"></i><b>2.2.3</b> Non-Linear Regression</a></li>
+<li class="chapter" data-level="2.2.4" data-path="regression-models.html"><a href="regression-models.html#example-simulated-dataset"><i class="fa fa-check"></i><b>2.2.4</b> Example: Simulated Dataset</a></li>
+<li class="chapter" data-level="2.2.5" data-path="regression-models.html"><a href="regression-models.html#generalized-regeression-models"><i class="fa fa-check"></i><b>2.2.5</b> Generalized Regeression Models</a></li>
+<li class="chapter" data-level="2.2.6" data-path="regression-models.html"><a href="regression-models.html#example-logistic-regression-model"><i class="fa fa-check"></i><b>2.2.6</b> Example: Logistic Regression Model</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="regression-models.html"><a href="regression-models.html#references-1"><i class="fa fa-check"></i><b>2.3</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="case-study-i-comparing-2-types-logistics-regression.html"><a href="case-study-i-comparing-2-types-logistics-regression.html"><i class="fa fa-check"></i><b>3</b> Case Study I: Comparing 2 Types Logistics Regression</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="case-study-i-comparing-2-types-logistics-regression.html"><a href="case-study-i-comparing-2-types-logistics-regression.html#multinomial-logistic"><i class="fa fa-check"></i><b>3.1</b> Multinomial Logistic</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="case-study-i-comparing-2-types-logistics-regression.html"><a href="case-study-i-comparing-2-types-logistics-regression.html#definition-of-multinomial-logistic"><i class="fa fa-check"></i><b>3.1.1</b> Definition of Multinomial Logistic</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="case-study-i-comparing-2-types-logistics-regression.html"><a href="case-study-i-comparing-2-types-logistics-regression.html#case-study"><i class="fa fa-check"></i><b>3.2</b> Case Study</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="case-study-i-comparing-2-types-logistics-regression.html"><a href="case-study-i-comparing-2-types-logistics-regression.html#data-preparation"><i class="fa fa-check"></i><b>3.2.1</b> Data Preparation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="midterm-exam.html"><a href="midterm-exam.html"><i class="fa fa-check"></i><b>4</b> Midterm Exam</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="midterm-exam.html"><a href="midterm-exam.html#import-library"><i class="fa fa-check"></i><b>4.1</b> Import Library</a></li>
+<li class="chapter" data-level="4.2" data-path="midterm-exam.html"><a href="midterm-exam.html#load-data"><i class="fa fa-check"></i><b>4.2</b> Load Data</a></li>
+<li class="chapter" data-level="4.3" data-path="midterm-exam.html"><a href="midterm-exam.html#identifikasi-masalah"><i class="fa fa-check"></i><b>4.3</b> Identifikasi Masalah</a></li>
+<li class="chapter" data-level="4.4" data-path="midterm-exam.html"><a href="midterm-exam.html#eda-exploratory-data-analysis"><i class="fa fa-check"></i><b>4.4</b> EDA (Exploratory Data Analysis)</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="midterm-exam.html"><a href="midterm-exam.html#data-information"><i class="fa fa-check"></i><b>4.4.1</b> Data Information</a></li>
+<li class="chapter" data-level="4.4.2" data-path="midterm-exam.html"><a href="midterm-exam.html#statistic-descriptive"><i class="fa fa-check"></i><b>4.4.2</b> Statistic Descriptive</a></li>
+<li class="chapter" data-level="4.4.3" data-path="midterm-exam.html"><a href="midterm-exam.html#cek-missing-value"><i class="fa fa-check"></i><b>4.4.3</b> Cek Missing Value</a></li>
+<li class="chapter" data-level="4.4.4" data-path="midterm-exam.html"><a href="midterm-exam.html#variable-distribution"><i class="fa fa-check"></i><b>4.4.4</b> Variable Distribution</a></li>
+<li class="chapter" data-level="4.4.5" data-path="midterm-exam.html"><a href="midterm-exam.html#scatter-plot-terhadap-kualiitas"><i class="fa fa-check"></i><b>4.4.5</b> Scatter Plot terhadap kualiitas</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="midterm-exam.html"><a href="midterm-exam.html#heatmap-correlation"><i class="fa fa-check"></i><b>4.5</b> Heatmap Correlation</a></li>
+<li class="chapter" data-level="4.6" data-path="midterm-exam.html"><a href="midterm-exam.html#linear-regression-models-1"><i class="fa fa-check"></i><b>4.6</b> Linear Regression Models</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="midterm-exam.html"><a href="midterm-exam.html#split-data"><i class="fa fa-check"></i><b>4.6.1</b> Split Data</a></li>
+<li class="chapter" data-level="4.6.2" data-path="midterm-exam.html"><a href="midterm-exam.html#statistics-models"><i class="fa fa-check"></i><b>4.6.2</b> Statistics Models</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="midterm-exam.html"><a href="midterm-exam.html#uji-asumsi-model"><i class="fa fa-check"></i><b>4.7</b> Uji Asumsi Model</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="midterm-exam.html"><a href="midterm-exam.html#residuals-fitte"><i class="fa fa-check"></i><b>4.7.1</b> Residuals &amp; Fitte</a></li>
+<li class="chapter" data-level="4.7.2" data-path="midterm-exam.html"><a href="midterm-exam.html#normalitas-residual-shapiro-wilk"><i class="fa fa-check"></i><b>4.7.2</b> Normalitas Residual (Shapiro-Wilk)</a></li>
+<li class="chapter" data-level="4.7.3" data-path="midterm-exam.html"><a href="midterm-exam.html#qq-plot"><i class="fa fa-check"></i><b>4.7.3</b> QQ Plot</a></li>
+<li class="chapter" data-level="4.7.4" data-path="midterm-exam.html"><a href="midterm-exam.html#homoskedastitas-breusch-pagan"><i class="fa fa-check"></i><b>4.7.4</b> Homoskedastitas (Breusch-Pagan)</a></li>
+<li class="chapter" data-level="4.7.5" data-path="midterm-exam.html"><a href="midterm-exam.html#auto-correlation-durbin-watson"><i class="fa fa-check"></i><b>4.7.5</b> Auto-Correlation (Durbin Watson)</a></li>
+<li class="chapter" data-level="4.7.6" data-path="midterm-exam.html"><a href="midterm-exam.html#multikolinearitas-vif"><i class="fa fa-check"></i><b>4.7.6</b> Multikolinearitas (VIF)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="midterm-exam.html"><a href="midterm-exam.html#fit-model-sklearn-evaluation"><i class="fa fa-check"></i><b>4.8</b> Fit model (Sklearn) &amp; Evaluation</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="midterm-exam.html"><a href="midterm-exam.html#training-models"><i class="fa fa-check"></i><b>4.8.1</b> Training Models</a></li>
+<li class="chapter" data-level="4.8.2" data-path="midterm-exam.html"><a href="midterm-exam.html#evaluation"><i class="fa fa-check"></i><b>4.8.2</b> Evaluation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="midterm-exam.html"><a href="midterm-exam.html#visualization"><i class="fa fa-check"></i><b>4.9</b> Visualization</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="midterm-exam.html"><a href="midterm-exam.html#actual-vs-predicted"><i class="fa fa-check"></i><b>4.9.1</b> Actual vs Predicted</a></li>
+<li class="chapter" data-level="4.9.2" data-path="midterm-exam.html"><a href="midterm-exam.html#residual-plots"><i class="fa fa-check"></i><b>4.9.2</b> Residual Plots</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html"><a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html"><i class="fa fa-check"></i><b>5</b> Case Study II: Unsupervised Deep Clustering of COVID-19 Symptom Patterns Using Autoencoder, SOM, and Spectral Methods</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html"><a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#multinomial-logistic-1"><i class="fa fa-check"></i><b>5.1</b> Multinomial Logistic</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html"><a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#definition-of-multinomial-logistic-1"><i class="fa fa-check"></i><b>5.1.1</b> Definition of Multinomial Logistic</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<div class="sidebar-footer">
+ <p><strong>Institut Teknologi Sains Bandung</strong><br>
+  <span>Data Science Program</span></p>
+  <p class="sidebar-author">
+    <strong>Author:</strong> Siti Azkya Nurhalima<br>
+    <strong>Date:</strong> 25-10-23
+  </p>
+</div>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analysis and Predictive Modelling</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Case Study II: Unsupervised Deep Clustering of COVID-19 Symptom Patterns Using Autoencoder, SOM, and Spectral Methods<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="multinomial-logistic-1" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Multinomial Logistic<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#multinomial-logistic-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="definition-of-multinomial-logistic-1" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Definition of Multinomial Logistic<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#definition-of-multinomial-logistic-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="midterm-exam.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/urvynous/Analysis-and-Predictive-Modelling/edit/main/chapter1.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/urvynous/Analysis-and-Predictive-Modelling/blob/main/chapter1.Rmd",
+    "text": null
+  },
+  "download": ["Analysis-and-Predictive-Modelling.pdf", "Analysis-and-Predictive-Modelling.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "none",
+    "float": false,
+    "before_body": "<img src="images/azky.jpg" alt="Logo" width="100">n"
+  },
+  "toolbar": {
+    "position": "none"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>
