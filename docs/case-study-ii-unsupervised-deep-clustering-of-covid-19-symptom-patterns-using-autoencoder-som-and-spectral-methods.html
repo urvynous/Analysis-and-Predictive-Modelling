@@ -177,10 +177,10 @@
 <li class="chapter" data-level="5.1.3" data-path="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html"><a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#research-objectives"><i class="fa fa-check"></i><b>5.1.3</b> Research Objectives</a></li>
 <li class="chapter" data-level="5.1.4" data-path="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html"><a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#relevance-of-clustering"><i class="fa fa-check"></i><b>5.1.4</b> Relevance of Clustering</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html"><a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#exploratory-data-analysis"><i class="fa fa-check"></i><b>5.2</b> Exploratory Data Analysis</a>
+<li class="chapter" data-level="5.2" data-path="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html"><a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#dataset-description"><i class="fa fa-check"></i><b>5.2</b> Dataset Description</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html"><a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#descriptive-statistics"><i class="fa fa-check"></i><b>5.2.1</b> Descriptive Statistics</a></li>
-<li class="chapter" data-level="5.2.2" data-path="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html"><a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#missig-value-assessment"><i class="fa fa-check"></i><b>5.2.2</b> Missig Value Assessment</a></li>
+<li class="chapter" data-level="5.2.1" data-path="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html"><a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#data-source"><i class="fa fa-check"></i><b>5.2.1</b> Data Source</a></li>
+<li class="chapter" data-level="5.2.2" data-path="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html"><a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#dataset-overview"><i class="fa fa-check"></i><b>5.2.2</b> Dataset Overview</a></li>
 <li class="chapter" data-level="5.2.3" data-path="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html"><a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#correlation-structure"><i class="fa fa-check"></i><b>5.2.3</b> Correlation Structure</a></li>
 <li class="chapter" data-level="5.2.4" data-path="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html"><a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#outlier-detection"><i class="fa fa-check"></i><b>5.2.4</b> Outlier Detection</a></li>
 </ul></li>
@@ -231,24 +231,81 @@
 <h2><span class="header-section-number">5.1</span> Introduction<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="background" class="section level3 hasAnchor" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Background<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#background" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The COVID-19 pandemic generated substantial global interest in understanding how symptoms manifest across diverse populations. Symptom presentation can vary widely, and identifying underlying symptom patterns is essential for supporting surveillance, triage, and early assessment strategies. Unsupervised learning has emerged as an effective approach for discovering hidden structures in clinical and symptom-level data, particularly when diagnostic labels are unavailable. Prior investigations have demonstrated that unsupervised clustering can reveal meaningful COVID-19 subgroups, highlight differences in symptom co-occurrence, and support medical decision-making in clinical environments [1], [2].</p>
 </div>
 <div id="research-problem" class="section level3 hasAnchor" number="5.1.2">
 <h3><span class="header-section-number">5.1.2</span> Research Problem<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#research-problem" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Although various studies have analyzed COVID-19 symptoms, limited work has examined the latent structure of symptom patterns using deep clustering techniques on publicly available tabular datasets. Traditional clustering approaches often fail to capture the nonlinear relationships inherent in high-dimensional symptom data. Meanwhile, deep learning–based representations and topology-preserving neural methods such as Self-Organizing Maps (SOM) offer the ability to uncover richer latent structures. Despite their potential, a systematic comparison of deep autoencoder clustering, SOM, and spectral clustering for COVID-19 symptom analysis remains lacking.</p>
 </div>
 <div id="research-objectives" class="section level3 hasAnchor" number="5.1.3">
 <h3><span class="header-section-number">5.1.3</span> Research Objectives<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#research-objectives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This study investigates latent symptom groups based on self-reported COVID-19 symptoms using three unsupervised clustering techniques. The objectives are to:</p>
+<ol style="list-style-type: decimal">
+<li><p>Learn compact latent embeddings through a deep autoencoder and apply clustering in the encoded space.</p></li>
+<li><p>Utilize a Self-Organizing Map to project symptom data onto a two-dimensional topology-preserving grid.</p></li>
+<li><p>Apply spectral clustering to identify groups using graph-based similarity structures.</p></li>
+<li><p>Compare methods in terms of internal cluster quality, stability, interpretability, and computational efficiency.</p></li>
+</ol>
 </div>
 <div id="relevance-of-clustering" class="section level3 hasAnchor" number="5.1.4">
 <h3><span class="header-section-number">5.1.4</span> Relevance of Clustering<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#relevance-of-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Clustering is highly relevant for analyzing COVID-19 symptom data due to the substantial clinical heterogeneity observed among infected individuals. Patients reporting similar symptoms can experience markedly different disease trajectories, making traditional statistical summaries insufficient to capture the underlying structural variation. The dataset used in this study—consisting of diverse symptom indicators, respiratory complaints, and comorbidity-related variables—exhibits non-linear relationships, high dimensionality, and potential latent structures that cannot be directly observed.</p>
+<p>Deep clustering is particularly suitable for this context for several reasons:</p>
+<ol style="list-style-type: decimal">
+<li><p>Ability to learn non-linear interactions. Conventional clustering methods such as K-Means assume linear separability and often fail on medical datasets with complex feature dependencies. Deep models, especially autoencoders, can capture non-linear interactions between symptoms and uncover meaningful latent representations [1].</p></li>
+<li><p>Representation learning beyond mathematical projection. Unlike PCA, which applies linear projection, autoencoders learn compressed representations that preserve clinically relevant variation. This is crucial when multiple symptoms interact in non-linear ways or form subtle subpatterns [2].</p></li>
+<li><p>Intrinsic noise reduction. The bottleneck structure of an autoencoder forces the model to focus on core symptom patterns while minimizing the influence of infrequent, noisy, or inconsistent symptom reports—an important benefit given the irregular nature of self-reported COVID-19 symptoms [3].</p></li>
+<li><p>More separable latent manifolds for downstream clustering. Latent spaces generated by deep models provide smoother and more structured manifolds, improving cluster quality for methods like SOM or Spectral Clustering that rely on topological or graph-based relationships [4].</p></li>
+<li><p>Enhanced clinical interpretability. Once clusters are identified in the latent space, they can be mapped back to the original symptom variables to reveal clinically meaningful subphenotypes—such as respiratory-dominant, gastrointestinal-dominant, or mild-symptom groups—as demonstrated in recent deep clustering studies for infectious diseases [5].</p></li>
+</ol>
+<p>Therefore, the adoption of deep clustering is not only technically advantageous but also clinically justified, as it enables the discovery of nuanced, non-linear symptom patterns that conventional approaches would likely overlook.</p>
+<hr />
 </div>
 </div>
-<div id="exploratory-data-analysis" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Exploratory Data Analysis<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#exploratory-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="descriptive-statistics" class="section level3 hasAnchor" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> Descriptive Statistics<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#descriptive-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="dataset-description" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Dataset Description<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#dataset-description" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-source" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Data Source<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#data-source" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The dataset used in this study originates from Kaggle and is titled “COVID-19 Symptoms Checker”, published by Hung Nguyen. The dataset contains synthetic but realistically modeled COVID-19 health records generated using probabilistic sampling based on CDC symptom guidelines and common epidemiological patterns.</p>
+<p>This dataset provides a structured collection of symptom indicators, comorbidities, chronic conditions, and exposure risk factors. It was designed to support machine learning tasks such as:</p>
+<ol style="list-style-type: decimal">
+<li><p>early COVID-19 risk prediction,</p></li>
+<li><p>symptom pattern clustering,</p></li>
+<li><p>severity classification,</p></li>
+<li><p>decision support modeling.</p></li>
+</ol>
+<p>The dataset is publicly available and accessible through:</p>
+<p>Kaggle – COVID-19 Symptoms Checker</p>
+<p><a href="https://www.kaggle.com/datasets/iamhungundji/covid19-symptoms-checker" class="uri">https://www.kaggle.com/datasets/iamhungundji/covid19-symptoms-checker</a></p>
 </div>
-<div id="missig-value-assessment" class="section level3 hasAnchor" number="5.2.2">
-<h3><span class="header-section-number">5.2.2</span> Missig Value Assessment<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#missig-value-assessment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="dataset-overview" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Dataset Overview<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#dataset-overview" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The dataset represents a structured collection of COVID-19 symptom profiles generated to simulate real-world diagnostic screening conditions during the COVID-19 pandemic. Each record corresponds to an individual who undergoes a symptom-checking assessment containing:</p>
+<ol style="list-style-type: decimal">
+<li><p>clinical symptoms (e.g., fever, cough, dyspnea),</p></li>
+<li><p>upper respiratory symptoms (e.g., nasal congestion, runny nose),</p></li>
+<li><p>systemic symptoms (e.g., fatigue, body pain),</p></li>
+<li><p>gastrointestinal symptoms,</p></li>
+<li><p>demographic risk factors (e.g., age ≥60),</p></li>
+<li><p>exposure-related factors (e.g., contact with confirmed cases),</p></li>
+<li><p>preventive behaviors (mask usage, sanitization practices).</p></li>
+</ol>
+<p>This dataset was designed to mirror the typical inputs used in digital self-assessment tools, mobile triage applications, and early-stage telemedicine screening systems deployed during the COVID-19 outbreak. Such screening systems typically rely on patient-reported symptoms and exposure history rather than laboratory tests, making symptom-pattern analysis essential for:</p>
+<ol style="list-style-type: decimal">
+<li><p>identifying high-risk individuals,</p></li>
+<li><p>discovering hidden symptom clusters,</p></li>
+<li><p>improving screening workflows,</p></li>
+<li><p>developing early detection models,</p></li>
+<li><p>supporting public health decision-making.</p></li>
+</ol>
+<p>In the context of this study, the dataset provides a holistic representation of both clinical and behavioral attributes, enabling multidimensional analysis of:</p>
+<ol style="list-style-type: decimal">
+<li><p>symptom co-occurrence patterns,</p></li>
+<li><p>relationships between exposure and outcomes,</p></li>
+<li><p>risk stratification based on symptom severity,</p></li>
+<li><p>predictive modeling of COVID-19 infection likelihood.</p></li>
+</ol>
+<p>Although the dataset uses synthetic generation techniques, it follows epidemiologically realistic distributions of symptoms based on CDC clinical guidelines and global COVID-19 case reports. This makes it suitable for machine learning experiments while avoiding privacy concerns.</p>
 </div>
 <div id="correlation-structure" class="section level3 hasAnchor" number="5.2.3">
 <h3><span class="header-section-number">5.2.3</span> Correlation Structure<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#correlation-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -284,6 +341,11 @@
 </div>
 <div id="references-2" class="section level2 hasAnchor" number="5.6">
 <h2><span class="header-section-number">5.6</span> References<a href="case-study-ii-unsupervised-deep-clustering-of-covid-19-symptom-patterns-using-autoencoder-som-and-spectral-methods.html#references-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>1] S. Ilbeigipour, A. Albadvi, and E. A. Noughabi, “Cluster-based analysis of COVID-19 cases using self-organizing map neural network and K-means methods to improve medical decision-making,” Inform. Med. Unlocked, vol. 32, p. 101005, Jul. 2022, doi: 10.1016/j.imu.2022.101005.</p>
+<p>[2] L. Dinh et al., “Unsupervised machine learning to investigate trajectory patterns of COVID-19 symptoms and physical activity,” npj Digit. Med., 2023.</p>
+<p>[3] “Unsupervised machine learning clustering approach for hospitalized COVID-19 pneumonia patients,” BMC Pulm. Med., 2025.</p>
+<p>[4] M. Chavooshi and A. V. Mamonov, “Autoencoded UMAP-Enhanced Clustering for Unsupervised Learning,” arXiv, Jan. 2025.</p>
+<p>[5] R. Chandra et al., “Unsupervised machine learning framework for discriminating major variants of concern during COVID-19,” PubMed, 2022.</p>
 
 </div>
 </div>
